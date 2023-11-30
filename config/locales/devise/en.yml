@@ -64,6 +64,7 @@ en:
       provider_terms_and_conditions: Vendor Terms & Conditions
       links:
         sign_in: Sign in
+        sign_up: Sign up
     failure:
       invalid: Invalid email or password. If you do have an account, please double-check your e-mail and password.
       not_found_in_database: Invalid email or password. If you do have an account, please double-check your e-mail and password.

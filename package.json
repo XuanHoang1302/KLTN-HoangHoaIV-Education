@@ -1,0 +1,38 @@
+{
+  "name": "HoangHoaIV_Education",
+  "private": true,
+  "dependencies": {
+    "@csvbox/csvboxjs": "^1.0.10",
+    "@glidejs/glide": "^3.6.0",
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/actioncable": "^7.0.4",
+    "@rails/actiontext": "^7.0.4",
+    "@rails/activestorage": "^7.0.4",
+    "@rails/request.js": "^0.0.8",
+    "ahoy.js": "^0.4.3",
+    "chart.js": "^4.3.2",
+    "chartkick": "^4.2.0",
+    "esbuild": "^0.19.2",
+    "esbuild-loader": "^3.0.0",
+    "feather-icons": "^4.29.1",
+    "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.1",
+    "leaflet.markercluster": "^1.5.3",
+    "litepicker": "^2.0.12",
+    "local-time": "^2.1.0",
+    "micromodal": "^0.4.10",
+    "moment-timezone": "^0.5.40",
+    "puppeteer": "^21.5.2",
+    "slim-select": "^2.6.0",
+    "stimulus-rails-nested-form": "^4.1.0",
+    "stimulus-sortable": "^3.2.0",
+    "suggestions": "^1.7.1",
+    "sweetalert": "^2.1.2",
+    "trix": "^1.2.0"
+  },
+  "version": "0.1.0",
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+  }
+}

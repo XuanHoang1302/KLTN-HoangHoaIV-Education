@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module VirtualLab
+module HoangHoaIVEducation
   class FormBuilder < ActionView::Helpers::FormBuilder
     include ApplicationHelper
 

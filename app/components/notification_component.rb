@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class NotificationComponent < ViewComponent::Base
   renders_one :message
   renders_one :details

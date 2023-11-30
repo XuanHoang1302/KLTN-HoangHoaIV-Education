@@ -3,7 +3,7 @@
   <% next if level == 'timedout' %><%# this is a hack bc Devise, see https://github.com/heartcombo/devise#configuring-controllers %>
 
   <%= render(NotificationComponent.new(type: level, id: '')) do |component| %>
-    <% component.message do %>
+    <% component.with_message do %>
       <%= simple_format(message.presence&.to_s) %>
     <% end %>
   <% end %>
