@@ -1,0 +1,86 @@
+////////////////////////
+// Pagination
+////////////////////////
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.4rem;
+
+    .page {
+        @extend .button--secondary;
+
+        display: block;
+        box-sizing: border-box;
+        height: 3.2rem;
+        width: 3.2rem;
+        margin: 0 0.4rem;
+        border-color: var(--light-grey--120);
+        border-width: 0.1rem;
+        border-radius: 0.5rem;
+
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+        font-weight: normal;
+        text-align: center;
+
+        &:hover, &:focus, &:active {
+            border-width: 0.1rem;
+        }
+
+        a {
+            display: block;
+            padding: 0.8rem;
+            font-weight: normal;
+            color: var(--grey);
+
+            &:hover, &:focus, &:active {
+                font-weight: normal;
+                text-decoration: none;
+                color: var(--grey);
+            }
+        }
+
+    }
+
+    .page.gap {
+        border-color: transparent !important;
+        color: var(--light-grey--120);
+    }
+
+    .page svg {
+        height: 1.8rem;
+        margin: -0.2rem 0 0 -0.6rem;
+        stroke-width: 2px;
+    }
+
+    .page.current {
+        display: block;
+        padding: 0.8rem;
+        border-color: var(--grey);
+    }
+
+    .page.next svg {
+        margin-left: -0.4rem;
+    }
+
+    .page.disabled {
+        display: block;
+        padding: 0.8rem;
+        color: var(--light-grey--120);
+        border-color: var(--light-grey--120)
+    }
+
+    // Hide forward/back button navigation when there's only one page...
+
+    .page.next:nth-child(3),
+    .page.next.disabled:nth-child(3) {
+        display: none;
+    }
+
+    .page.prev:nth-last-child(3),
+    .page.prev.disabled:nth-child(3) {
+        display: none;
+    }
+
+}

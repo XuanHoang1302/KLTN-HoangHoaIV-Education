@@ -1,0 +1,66 @@
+////////////////////////
+// Margin & Padding Helpers
+////////////////////////
+
+@mixin generateSpacingHelpers($spacingTypes: (margin, padding), $spacingIncrements: 12, $incrementSize: 0.4rem, $spacingSides: (top, right, bottom, left)) {
+
+  @each $spacingType in $spacingTypes {
+
+    $spacingTypeShort: str-slice($spacingType, 1, 1);
+
+    @for $i from 0 through $spacingIncrements {
+
+      .u-#{$spacingTypeShort}#{$i} {
+        #{$spacingType}: $i*$incrementSize !important;
+      }
+
+      @each $side in $spacingSides {
+        $sideShort: str-slice($side, 1, 1);
+        .u-#{$spacingTypeShort}#{$sideShort}#{$i} {
+          #{$spacingType}-#{$side}: $i*$incrementSize !important;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+@include generateSpacingHelpers;
+
+// Usage examples:
+// class="u-mt1" = margin-top: 0.5rem
+// class="u-p2" = padding: 1rem;
+
+// Additions
+
+.u-mla { margin-left: auto !important; }
+.u-mla ~ .u-mla { margin-left: unset !important; }
+.u-mra { margin-right: auto !important; }
+.u-mha { margin-left: auto !important; margin-right: auto !important; }
+.u-mta { margin-top: auto !important; }
+.u-mba { margin-bottom: auto !important; }
+.u-mva { margin-top: auto !important; margin-bottom: auto !important; }
+
+
+////////////////////////
+// Font Size & Line Height Helpers
+////////////////////////
+
+@mixin generateTypeSpacingHelpers($spacingTypes: (line-height, font-size), $spacingIncrements: 10, $incrementSize: 0.4rem) {
+
+  @each $spacingType in $spacingTypes {
+
+    $spacingTypeShort: str-slice($spacingType, 1, 1);
+
+    @for $i from 0 through $spacingIncrements {
+
+      .u-#{$spacingTypeShort}#{$i} {
+        #{$spacingType}: $i*$incrementSize !important;
+      }
+    }
+  }
+}
+
+@include generateTypeSpacingHelpers;

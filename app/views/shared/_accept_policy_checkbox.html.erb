@@ -1,0 +1,32 @@
+<% required = true if local_assigns[:required].nil? %>
+
+<div data-controller="accept-policy">
+  <%= form.check_box(
+    field,
+    {
+      required: required,
+      data: {
+        action: local_assigns[:remove_error].nil? ? "accept-policy#show" : "accept-policy#removeUncheckedError",
+        accept_policy_target: "checkbox"
+      },
+    },
+    true,
+    false
+  ) do %>
+    <%= label %>
+    <%= link_to link_text, "javascript:;", data: { action: "accept-policy#show" } %>
+  <% end %>
+
+  <%= render ModalComponent.new(id: "#{field}_modal", show_actions: false, show_close: false, data_options: { data: { accept_policy_target: "policyModal" }}) do |component| %>
+    <%= turbo_frame_tag 'model_content', src: policy_path, loading: 'lazy' %>
+
+    <footer class="modal__footer">
+      <button type="button" class="button button--secondary" data-micromodal-close>
+        <%= t("devise.registrations.new.decline_policy") %>
+      </button>
+      <button type="button" class="button button--primary" data-action="accept-policy#accept" data-micromodal-close>
+        <%= t("devise.registrations.new.accept_policy") %>
+        </button>
+    </footer>
+  <% end %>
+</div>

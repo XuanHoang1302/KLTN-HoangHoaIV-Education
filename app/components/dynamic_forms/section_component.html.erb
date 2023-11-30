@@ -1,0 +1,12 @@
+<h2 class="h4">
+  <%= @section.title %>
+  <% if @section.tooltip %>
+    <%= tag.span class: "has-help--long", help: @section.tooltip % @section.title.downcase_first_letter do %>
+      <%= render(IconComponent.new(name: :info)) %>
+    <% end %>
+  <% end %>
+</h2>
+
+<% @html_form.fields_for @section.key do |section_form| %>
+  <%= render DynamicForms::FieldComponent.with_collection(@section.fields, html_form: section_form, data: @data, readonly: @readonly) %>
+<% end %>

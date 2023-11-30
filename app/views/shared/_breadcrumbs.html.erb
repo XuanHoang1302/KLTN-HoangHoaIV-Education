@@ -1,0 +1,23 @@
+<div class="l-grid-span--12 u-ml7 d--none-md">
+  <% if breadcrumbs.show? %>
+    <ul class="breadcrumbs u-mt4">
+      <li class="breadcrumb breadcrumb--back">
+        <%= link_to breadcrumbs.back_link.path do %>
+          <%= render(IconComponent.new(name: 'chevron-left')) %>
+          <span class="visually-hidden"><%= t('.go_back') %></span>
+        <% end %>
+      </li>
+      <% breadcrumbs.tail.each do |crumb| %>
+        <li class="breadcrumb">
+          <%= link_to crumb.label, crumb.path %>
+        </li>
+        <li class="breadcrumb breadcrumb--spacer" aria-hidden="true">
+          <%= render(IconComponent.new(name: 'chevron-right')) %>
+        </li>
+      <% end %>
+      <li class="breadcrumb breadcrumb--current">
+        <%= breadcrumbs.head.label %>
+      </li>
+    </ul>
+  <% end %>
+</div>

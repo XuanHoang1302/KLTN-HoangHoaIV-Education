@@ -1,0 +1,226 @@
+<%= tag.search_result id: "search_#{@context}_#{@search_result.id}",
+                      class: "card card--summary",
+                      data: if @selected.present?
+                              {
+                                service_selected_id: @search_result.id,
+                                service_company_type:
+                                  @search_result.company.activation_approved? && 'registered' ||
+                                  @search_result.company && @search_result.company.verified? && 'verified?' ||
+                                  'cold',
+                                time_delivery: @search_result.execution_time_minutes || '',
+                                price: @search_result.minimum_order_price || '',
+                                distance_input: distance&.ceil,
+                                distance_unit: "km",
+                                country: @search_result&.address&.country || '',
+                                strategic_provider: @search_result.company.strategic_provider || false
+                              }
+                            else
+                              {
+                                service_id: @search_result.id,
+                                service_company_type:
+                                  @search_result.company.activation_approved? && 'registered' ||
+                                  @search_result.company && @search_result.company.verified? && 'verified?' ||
+                                  'cold',
+                                time_delivery: @search_result.execution_time_minutes || '',
+                                price: @search_result.minimum_order_price || '',
+                                distance_input: distance&.ceil,
+                                distance_unit: "km",
+                                country: @search_result&.address&.country || '',
+                                strategic_provider: @search_result.company.strategic_provider || false
+                              }
+                            end do %>
+  <details>
+    <summary>
+      <div class="l-grid match-container">
+          <div class="tag--solid tag--rating card-header-match">
+            <%= "#{score}% #{t('.match')}" %>
+          </div>
+          <div class="l-grid-span--12">
+            <div class="l-grid">
+              <div class="l-grid-span--5">
+                <h2 class="search-card-title">
+                  <!--              <span class="card__index<%#= cold_vendor? ? " t--grey--160 bg--yellow" : "" %>"><%#= @position %></span>-->
+                  <span class="d--inline-block"> <%= @search_result.name %></span>
+                </h2>
+                <p class="card__vendor">
+                  <%= link_to company_path(@search_result.company), target: "_blank" do %>
+                    <%= vendor %> (Language: <%= @search_result.company.default_language %>)
+                  <% end %>
+                </p>
+                <p class="card__vendor">Email Address: <%= @search_result.company.contact_email %></p>
+                <div class="card-tag-container">
+                  <div class="card-tag">
+                    <% if @search_result.company.strategic_provider.present? && @search_result.company.strategic_provider == true %>
+                      <%= tag.div class: 'tag--solid tag--rating modal__header' do %>
+                        <%= t('admin.companies.company_row.strategic')%>
+                      <% end  %>
+                    <% else %>
+                      <%= tag.div class: 'tag--solid medium-risk modal__header' do %>
+                        <%= t('admin.companies.company_row.unset_strategic')%>
+                      <% end  %>
+                    <% end %>
+                  </div>
+                  <div class="card-tag">
+                    <%= tag.div class: 'tag--solid medium-risk modal__header' do %>
+                      <%= t('.cold_vendor').upcase_first %>
+                    <% end if cold_vendor? %>
+                    <%= tag.div class: 'tag--solid low-risk modal__header' do %>
+                      <%= t('.verified').upcase_first %>
+                    <% end if verified_vendor? %>
+                  </div>
+                </div>
+              </div>
+              <div class="l-grid-span--4">
+                <div class="card__description">
+                  <%= truncate @search_result.description, length: 130 %>
+                </div>
+                <div class="search-card-icons">
+                  <p>
+                    <%= render(IconComponent.new(name: "clock", bold: true)) %>
+                    <strong><%= t('.delivery_time') %></strong>
+                    <span>
+                      <% if delivery_time.present? %>
+                        <%= pluralize(delivery_time, t("time.units.#{@search_result.execution_time_unit}")) %>
+                      <% else %>
+                        <%= t('not_available') %>
+                      <% end %>
+                    </span>
+                  </p>
+                  <p>
+                    <%= render(IconComponent.new(name: "navigation", bold: true)) %>
+                    <strong><%= t('.distance') %></strong>
+                    <% if distance == nil %><span class="t--grey--80">&mdash;&nbsp;</span><% end %>
+                    <span><%= distance&.ceil %> km</span>
+                  </p>
+                  <p>
+                    <%= render(IconComponent.new(name: "euro")) %>
+                    <strong><%= t('.price') %></strong>
+                    <span>
+                      <% if @search_result.minimum_order_price.present? %>
+                        <%= t('.price_from', amount: number_to_currency(@search_result.minimum_order_price)) %>
+                      <% else %>
+                        <%= t('not_available') %>
+                      <% end %>
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div class="l-grid-span--3">
+                <div class="card__actions">
+                  <%= render "/searches/favorite_button", service_id: @search_result.service.id, favorite: @favorite, context: @context, distance: distance, score: score, selected: @selected %>
+
+                    <template>
+                      <%= tag.input id: :service_INDEX,
+                                    type: :hidden,
+                                    value: @search_result.id,
+                                    name: "buyers_request[services][INDEX][service_id]" %>
+                      <%= tag.input id: :service_distance_INDEX,
+                                    type: :hidden,
+                                    value: distance&.ceil,
+                                    name: "buyers_request[services][INDEX][distance_input]" %>
+                      <%= tag.input id: :service_distance_unit_INDEX,
+                                    type: :hidden,
+                                    value: "km",
+                                    name: "buyers_request[services][INDEX][distance_unit]" %>
+                    </template>
+
+                    <%= tag.button(
+                      data: {
+                        action: @selected.present? ? "direct-search#serviceSelectedSaved" :"direct-search#serviceSelected",
+                        select_text: t('.select'),
+                        deselect_text: t('.deselect')
+                      },
+                      class: "button button--secondary button--mini u-mb0"
+                    ) do %>
+                      <%= t('.select') %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="metrics-text-container">
+        <div class="l-grid">
+          <div class="l-grid-span--11">
+            <p class="metrics-span-header">
+              Statistics
+            </p>
+          </div>
+          <div class="l-grid-span--1">
+            <span class="card__toggle d--flex">
+              <%= render(IconComponent.new(name: 'chevron-down', bold: true, classes: 'plus')) %>
+              <%= render(IconComponent.new(name: 'chevron-up', bold: true, classes: 'minus')) %>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="l-grid-span--12">
+        <%= render( MetricHeaderComponent.new(metrics: @search_result.company.metric, search_id: @search_result.id)) if @search_result.company.metric%>
+      </div>
+    </summary>
+
+    <hr class="u-mt0">
+    <%= render( MetricComponent.new(metrics: @search_result.company.metric, search_id: @search_result.id)) if @search_result.company.metric%>
+    <hr class="u-mt0">
+
+
+    <h3 class="label--group"><%= t(".service_match") %></h3>
+
+    <table class="table--service-match">
+      <tr>
+        <th><%= t(".parameters") %></th>
+        <th><%= t(".lab_capability") %></th>
+        <th><%= t(".your_request") %></th>
+        <th><%= t(".match") %></th>
+      </tr>
+
+      <% associated_parameters.each do |service_parameter, search_parameter| %>
+        <tr>
+          <td><%= service_parameter&.parameter&.name || search_parameter.parameter.name %></td>
+          <td><%= service_parameter&.human_readable_values || "—" %></td>
+          <td>
+            <%= tag.span class: class_names("t--light-grey--140" => service_parameter&.recommended? && search_parameter.nil? ) do %>
+              <%= display_for_search_parameter(service_parameter, search_parameter) %>
+            <% end %>
+          </td>
+          <td>
+            <%= render associated_parameter_match_glyph(service_parameter, search_parameter) %>
+          </td>
+        </tr>
+      <% end %>
+
+      <% @search_result.characteristics.each do |characteristic, value| %>
+        <tr>
+          <td><%= Companies::Service.human_attribute_name(characteristic) %></td>
+          <td><%= render(IconComponent.new(name: !!value ? "check" : "x")) %></td>
+          <td>
+            <% if @search&.send(characteristic) %>
+              <%= render(IconComponent.new(name: "check")) %>
+            <% else %>
+              —
+            <% end %>
+          </td>
+          <td><%= characteristic_match_glyph characteristic %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <h3 class="label--group"><%= t(".about_this_service") %></h3>
+    <p class="card__box">
+      <% if @search_result.description.present? %>
+        <%= @search_result.description %>
+      <% else %>
+        <em class="t--center t--grey--40"><%= t('.no_service_description') %></em>
+      <% end  %>
+    </p>
+
+    <h3 class="label--group"><%= t(".about_this_seller") %></h3>
+    <p class="card__box u-mb8">
+      <% if @search_result.company.description.present? %>
+        <%= @search_result.company.description %>
+      <% else %>
+        <em class="t--center t--grey--40"><%= t('.no_company_description') %></em>
+      <% end %>
+    </p>
+  </details>
+<% end %>

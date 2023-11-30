@@ -1,0 +1,33 @@
+<tr>
+  <%@composition_analysis_attributes[0..1].each_slice(2) do |attr| %>
+    <td class="analysis has-print__width">
+      <%attr.each do |item| %>
+        <span class="d--block">
+          <% if item == :analysis_type %>
+            <% if @analysis.is_a?(Nias::CompositionAnalysis) %>
+              <strong>
+                <%= Nias::CompositionAnalysis.human_enum_name(item, @analysis_item[item.to_s]) %>
+              </strong>
+            <% else %>
+              <strong>
+                <%= Nias::CompositionAnalysis.human_enum_name(item, @analysis_item[:data][item.to_s]) %>
+              </strong>
+            <% end  %>
+          <% else %>
+            <%= @analysis_item[item] %>
+          <% end %>
+        </span>
+      <% end %>
+    </td>
+    <td class="has-print__width">
+      <ul class="has-print__li">
+        <li><abbr class="placeholder">Regulation (EC) No. 1907/2006 Lorem ipsum</abbr></li>
+        <li><abbr class="placeholder">Regulation (EC) No 1935/2004, (EU) No 10/2011 -Sensorial examination odor and taste rest</abbr></li>
+      </ul>
+    </td>
+    <td class="nias-price no-print">
+      <%= render Nias::LineItemPriceComponent.new(request: @request, customer_item: @analysis) unless @analysis.is_a?(Nias::CompositionAnalysis) %>
+    </td>
+  <% end %>
+</tr>
+

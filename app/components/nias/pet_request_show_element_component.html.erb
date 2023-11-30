@@ -1,0 +1,140 @@
+<% @bundles.each do |bundle| %>
+  <% title = @draft ? "#{bundle.model_name.human} #{bundle.reference_number}" : "#{bundle[0].model_name.human} #{bundle[0].reference_number}" %>
+  <div class="u-mb2">
+    <%= render AccordionComponent.new(closed: false, data_controller: "") do |accordition| %>
+      <%= accordition.with_title do %>
+        <%= title %>
+      <% end %>
+      <%= accordition.with_price_tag do %>
+        <% if !@draft %>
+          <p>€ <%= bundle[1].map{|bundle| bundle.price}.sum %></p>
+        <% end %>
+      <% end %>
+      <%= accordition.with_details do %>
+        <% sample = if @draft
+                      bundle
+                    else
+                      Current.company.buyer? ? bundle[0].origin : bundle[0]
+                    end
+           analyses = if @draft
+                        bundle.composition_analyses
+                      else
+                        bundle[1].select{|i| i.item.origin_type == 'Nias::CompositionAnalysis' }
+                      end
+           migrations = if @draft
+                          bundle.overall_migrations + bundle.specific_migrations
+                        else
+                          bundle[1].select {|b| b.item.origin_type == "Nias::OverallMigration"} + bundle[1].select {|b| b.item.origin_type == "Nias::SpecificMigration"}
+                        end
+        %>
+        <div class="sample-table has-print__padding">
+          <table>
+            <thead>
+              <%@sample_attributes.each_slice(2) do |attr| %>
+                <tr>
+                  <%attr.each do |item| %>
+                    <td><%= sample.class.human_attribute_name(item)%></td>
+                    <td>
+                      <% if sample.class.defined_enums.has_key?(item.to_s)%>
+                        <%= sample.class.human_enum_name(item,sample[item]) %>
+                      <% else %>
+                        <%= sample[item]  %>
+                      <%end %>
+                    </td>
+                  <%end %>
+                </tr>
+              <%end %>
+            </thead>
+          </table>
+        </div>
+        <div class="l-grid card sample-card print-break__page print-no__box_shadow">
+          <div class="l-grid-span--12">
+            <h2  class="card__title u-m3">Analysis to be carried out</h2>
+            <div class="sample-table migration__toggle" >
+              <% analyses.each do |analysis| %>
+                <% if @draft %>
+                  <table>
+                    <thead>
+                    <tr>
+                      <%= render Nias::PetRequestShowElementAnalysisComponent.new(request: @request, analysis: analysis) %>
+                    </tr>
+                    </thead>
+                  </table>
+                <% else %>
+                  <details class="l-grid-span--12 print-break__page" close %>
+                    <summary class="l-grid-span--12 d--flex">
+                      <table>
+                        <thead>
+                        <tr>
+                          <%= render Nias::PetRequestShowElementAnalysisComponent.new(request: @request, analysis: analysis) %>
+                        </tr>
+                        </thead>
+                      </table>
+                    </summary>
+                    <% if @confirmed %>
+                      <div class="file-uploader-container"  >
+                        <%= render Nias::PetRequestShowFileViewComponent.new(request: @request, line_item: analysis.item) %>
+                      </div>
+                    <% end %>
+                  </details>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="l-grid card sample-card print-break__page print-no__box_shadow">
+          <div class="l-grid-span--12">
+            <h2 class="card__title u-m3" >Migration Assessment</h2>
+            <div class="has-print__table_width migration__toggle sample-table">
+              <%migrations.each do |migration| %>
+                <% if @draft %>
+                  <table>
+                    <thead>
+                    <tr>
+                      <%= render Nias::PetRequestShowElementMigrationComponent.new(request: @request, migration: migration) %>
+                    </tr>
+                    </thead>
+                  </table>
+                <% else %>
+                  <details class="l-grid-span--12 print-break__page" close %>
+                    <summary class="l-grid-span--12 d--flex">
+                      <table>
+                        <thead>
+                        <tr>
+                          <%= render Nias::PetRequestShowElementMigrationComponent.new(request: @request, migration: migration) %>
+                        </tr>
+                        </thead>
+                      </table>
+                    </summary>
+                    <% if @confirmed %>
+                      <div class="file-uploader-container">
+                        <%= render Nias::PetRequestShowFileViewComponent.new(request: @request, line_item: migration.item) %>
+                      </div>
+                    <% end %>
+                  </details>
+                <% end  %>
+              <%end %>
+            </div>
+          </div>
+        </div>
+        <div class="l-grid-container no-print">
+          <div class="l-grid">
+            <div class="l-grid-span--12">
+              <div class="total-container">
+                <div class="grand-total">
+                  TOTAL NET AMOUNT
+                </div>
+                <% if !@draft %>
+                  <div class="grand-total-price">
+                    €<%=bundle[1].map{|bundle| bundle.price}.sum%>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

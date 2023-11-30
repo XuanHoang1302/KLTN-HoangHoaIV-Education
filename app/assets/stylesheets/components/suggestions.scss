@@ -1,0 +1,56 @@
+////////////////////////
+// Suggestions
+////////////////////////
+
+.suggestions-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.suggestions {
+    list-style-type: none;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+    top: 0;
+    background-color: var(--white);
+    border: 0.2rem solid var(--grey--20);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow--low);
+
+    .active {
+        background-color: var(--light-grey--80)
+    }
+
+    li a:not([href]) {
+        --link-text: var(--grey--160);
+        --link-text--hover: var(--grey--160);
+        --link-text--focus: var(--grey--160);
+        --link-text--active: var(--grey--160);
+
+        display: block;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        font-weight: normal;
+        color: var(--link-text);
+        font-weight: normal;
+
+        display: flex;
+        text-decoration: none;
+    
+        &:hover, &:focus {
+          text-decoration: none;
+          background-color: var(--light-grey--80)
+        }
+    }
+
+    li.active a:not([href]) {
+        font-weight: bold;
+    }
+}

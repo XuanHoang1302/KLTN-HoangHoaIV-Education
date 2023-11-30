@@ -1,0 +1,40 @@
+<th <%= raw @addition_style %>>
+  <%= @model.send(:human_attribute_name, @attribute) %>
+  <% if @options.present? %>
+    <a class="table__filter-button">
+      <%= render(IconComponent.new(name: 'filter')) %>
+    </a>
+    <span class="table__filter-box">
+      <span><%= t(".#{@type}_tip") %></span>
+      <% if @url_date.present? %>
+        <div data-controller="classifiable-table-helper-date-picker">
+          <div data-classifiable-table-helper-date-picker-target="url" value="<%= @url_date %>"></div>
+          <div data-classifiable-table-helper-date-picker-target="model" value="<%= @model %>"></div>
+          <div data-classifiable-table-helper-date-picker-target="attribute" value="<%= @attribute %>"></div>
+          <input class="table-header-filter-text" id="lite-picker" placeholder="Select date" type="text" data-classifiable-table-helper-date-picker-target="pickerElement"/>
+        </div>
+        <div data-controller="classifiable-table-helper-date-range-picker">
+          <div data-classifiable-table-helper-date-range-picker-target="url" value="<%= @url_date %>"></div>
+          <div data-classifiable-table-helper-date-range-picker-target="model" value="<%= @model %>"></div>
+          <div data-classifiable-table-helper-date-range-picker-target="attribute" value="<%= @attribute %>"></div>
+          <input class="table-header-filter-text" id="lite-picker" placeholder="Select date range" type="text" data-classifiable-table-helper-date-range-picker-target="pickerElement"/>
+        </div>
+      <% end %>
+      <% @options.each do |option| %>
+        <% next if option == 'only_filter' %>
+        <%= link_to link_for(option), class: classes_for(option), data: { turbo_frame: :_self, turbo_action: :advance } do %>
+          <%= render(IconComponent.new(name: :check)) %>
+          <%= translation_for(option) %>
+        <% end %>
+      <% end %>
+      <% if @url.present? %>
+        <div data-controller="classifiable-table-header-helper">
+          <div data-classifiable-table-header-helper-target="url" value="<%= @url %>"></div>
+          <div data-classifiable-table-header-helper-target="model" value="<%= @model %>"></div>
+          <div data-classifiable-table-header-helper-target="attribute" value="<%= @attribute %>"></div>
+          <input type="text" class="table-header-filter-text" placeholder="Type to filter" value="" data-action="keyup->classifiable-table-header-helper#change_input_value change->classifiable-table-header-helper#cleanValue">
+        </div>
+      <% end %>
+    </span>
+  <% end %>
+</th>

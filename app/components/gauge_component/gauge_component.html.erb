@@ -1,0 +1,8 @@
+<div class="gauge">
+  <p class="gauge__label">
+    <%= t('.progress', step: @step, steps: @steps) -%>
+  </p>
+  <div class="gauge__base">
+    <div class="gauge__complete" style="width: <%= percent_complete -%>%"></div>
+  </div>
+</div>

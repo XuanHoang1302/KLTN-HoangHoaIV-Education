@@ -1,0 +1,30 @@
+<details class="l-grid card u-p0 print-no__box_shadow" <%= @closed ? 'close' : 'open' %> >
+  <summary class="l-grid-span--12 price-tag">
+    <div class="flex-item-left">
+      <h2 class="card__title u-m3 title">
+        <% if title? %>
+          <%= title %>
+        <% end %>
+      </h2>
+    </div>
+    <% if price_tag? %>
+      <div class="flex-item-center no-print" data-controller="">
+        <h2 class="card__title u-m3 price price-tag has-print__fe no-wrap"><%= price_tag %></h2>
+      </div>
+    <% end %>
+    <div class="flex-item-right" >
+      <span class="card__toggle toggle-flex d--flex f-jc-fe">
+        <%= render(IconComponent.new(name: 'chevron-down', bold: true, classes: 'plus no-print')) %>
+        <%= render(IconComponent.new(name: 'chevron-up', bold: true, classes: 'minus no-print')) %>
+        <% if custom_toggle? %>
+          <%= custom_toggle %>
+        <% end %>
+      </span>
+    </div>
+  </summary>
+  <div class="card__content u-m8 has-print__margin">
+    <% if details? %>
+      <%= details %>
+    <% end %>
+  </div>
+</details>

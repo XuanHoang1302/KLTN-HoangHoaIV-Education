@@ -1,0 +1,45 @@
+<%= tag.div(class: "modal micromodal-slide #{@classes}", id: @id, aria: { hidden: true }, data: @data) do %>
+  <%= tag.div(class: 'modal__overlay', tabindex: -1, data: cancel_data) do %>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="<%= @id -%>-title">
+      <header class="modal__header">
+        <% if @icon == '' && @title %>
+          <%= tag.h2(class: 'modal__title', id: "#{@id}-title", data: @title_data) do %>
+            <%= @title %>
+          <% end %>
+        <% end %>
+
+        <% if @show_close %>
+          <%= tag.button(class: 'modal__close button button--ghost button--close', 'aria-label': t('aria.close_modal'), data: cancel_data) do %>
+            <%= render(IconComponent.new(name: 'x')) %>
+          <% end %>
+        <% end %>
+      </header>
+
+      <div class="modal__content" id="<%= @id -%>-content">
+        <% if @icon.present? %>
+          <div class="icon-ornament u-mt0">
+            <%= image_tag("decorative_icon/#{@icon}.svg") %>
+          </div>
+
+          <h2 class="modal__title" id="<%= @id -%>-title">
+            <%= @title %>
+          </h2>
+        <% end %>
+
+        <%= content %>
+      </div>
+
+      <% if @show_actions %>
+        <footer class="modal__footer">
+          <%= tag.button(class: 'button button--secondary', 'aria-label': t('aria.close_modal'), data: cancel_data) do %>
+            <%= t("close") %>
+          <% end %>
+
+          <%= tag.button(class: 'button button--primary', form: @form_id, data: @confirm_data) do %>
+            <%= t("ok") %>
+          <% end %>
+        </footer>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

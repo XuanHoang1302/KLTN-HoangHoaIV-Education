@@ -1,0 +1,22 @@
+.canvas{
+  width: 10%;
+  transition: width 1s;
+}
+.hidden {
+  display: none;
+}
+
+.metrics-table-values{
+  &.red {
+    background: var(--red--20);
+  }
+  &.green {
+    background: var(--dark-green--20);
+  }
+  &.yellow {
+    background: var(--yellow--20);
+  }
+}
+.metric-table-text{
+  cursor: context-menu;
+}

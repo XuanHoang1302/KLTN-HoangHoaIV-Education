@@ -1,0 +1,20 @@
+<li data-guided-tour-id="dashboard">
+  <%= render NavLinkComponent.new(title: t('layouts.application.dashboard'), href: dashboard_path, icon: 'grid') %>
+</li>
+
+<li data-guided-tour-id="company">
+  <%= render NavLinkComponent.new(title: t('layouts.application.my_company'), href: preview_path(:companies), icon: 'home') %>
+</li>
+
+<%= tag.li data: { guided_tour_id: "services" } do %>
+  <%= render NavLinkComponent.new(title: t('layouts.application.my_services'), href: preview_path(:services), icon: 'briefcase') %>
+<% end if Current.user.default_company_role == 'provider' %>
+
+<li data-guided-tour-id="requests">
+  <%= render NavLinkComponent.new(title: t('layouts.application.my_request'), href: preview_path(:requests), icon: 'file-text') %>
+</li>
+
+<li data-guided-tour-id="orders">
+  <%= render NavLinkComponent.new(title: t('layouts.application.my_orders'), href: preview_path(:orders), icon: 'tag') %>
+</li>
+

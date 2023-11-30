@@ -1,0 +1,141 @@
+/*
+ *= require base/normalize
+ *= require base/variables
+ *= require base/utilities
+ *= require base/globals
+ *= require components/tables
+ *= require_tree ./pdf
+ */
+
+
+/**
+ * System fonts
+ *
+ * For rendering the PDFs, we're using the font Noto Sans (as we do
+ * in the rest of the application. However, loading all the possible
+ * versions of Noto Sans is taking rather long.
+ *
+ * By switching to the system-ui font stack, we're speeding up the
+ * entire process and we don't have to deal with ugly timeouts.
+ */
+
+html,
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-print-color-adjust: exact!important;
+}
+
+@media screen {
+  .execution-report {
+    background-color: white;
+    padding: 3.2rem;
+    width: 210mm;
+    height: 297mm;
+  }
+}
+
+.execution-report {
+  font-size: 1.2rem;
+}
+
+.execution-report p {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.execution-report h1 {
+  margin-top: 0.2rem;
+  font-size: 2.4rem;
+}
+
+.execution-report h2 {
+  font-size: 1.6rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.execution-report__parties {
+  margin-top: 3.2rem;
+  width: calc(50% - 1.6rem);
+  padding: 0.8rem 1.2rem 1.2rem;
+  border-color: var(--light-grey--80);
+}
+
+.execution-report__parties h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.execution-report h1 span.small {
+  display: block;
+  margin-top: 0.5cm;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.execution-report label {
+  font-weight: bold;
+}
+
+.execution-report .logo {
+  height: 1.5cm;
+}
+
+.execution-report .b--subtle {
+  border-color: var(--light-grey);
+}
+
+.execution-report__summary-table {
+  border: 1px solid var(--light-grey);
+  border-radius: 0.4rem;
+}
+
+.execution-report__summary-table div {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 1.6rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.execution-report__summary-table div:last-child {
+  border-bottom: none;
+}
+
+.execution-report__summary-table div:nth-child(even) {
+  background-color: var(--light-grey--40) !important;
+}
+
+.execution-report__summary-table hr {
+  margin: 0.8rem 0;
+}
+
+.execution-report__line-items {
+  margin-top: 3.2rem;
+  box-shadow: none;
+  border: 1px solid var(--light-grey);
+}
+
+.execution-report__line-items td, .execution-report__line-items th {
+  border-color: var(--light-grey);
+}
+
+.execution-report__line-items tr td:not(:first-child), .execution-report__line-items tr th:not(:first-child) {
+  border-color: var(--light-grey);
+}
+
+.execution-report__line-items tr td,
+.execution-report__line-items tr:not(:last-child) td {
+  border-bottom: 1px solid var(--light-grey) !important;
+}
+
+.execution-report__line-items td {
+  background-color: transparent;
+}
+
+.execution-report .readonly-text {
+  margin-top: -0.8rem;
+}
+
+.execution-report .no-page-break {
+  page-break-inside: avoid;
+}

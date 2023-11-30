@@ -1,0 +1,103 @@
+<%
+  presentable_attributes = %i[
+      process_type size accuracy resolution cal_points required_points_of_calibration range unit_name
+      accreditation_calibration_needed accreditation_format accreditation_cert_langs
+      type_of_qualification decision_rule qualification_note
+      category_of_measurement notes location
+    ]
+%>
+<% if line_items.to_a.any? { |e| e.process_type == "on_site" } %>
+<h4><%= t('calibrations.process_type.on_site')%></h4>
+<div class="lineitem-table">
+  <ul class="lineitem-table lineitem-header" >
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:device_name) %> </li>
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:manufacturer) %> </li>
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:device_type) %> </li>
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:quantity) %> </li>
+  </ul>
+  <% line_items.to_a.select{ |e| e.process_type == "on_site" }.each do |item| %>
+    <details class="l-grid-span--12 u-p0 " close %>
+      <summary class="l-grid-span--12 d--flex f-jc-sb l-grid-align-center-y">
+        <ul class="lineitem-table" >
+          <li class="d--inline-flex">
+              <span class="card__toggle d--flex">
+                <%= render(IconComponent.new(name: 'chevron-down', bold: true, classes: 'plus')) %>
+                <%= render(IconComponent.new(name: 'chevron-up', bold: true, classes: 'minus')) %>
+              </span>
+            <%= item[:device_name].presence || '---' %>
+          </li>
+          <li> <%= item[:manufacturer].presence || '---' %> </li>
+          <li> <%= item[:device_type].presence || '---' %> </li>
+          <li> <%= item[:quantity].presence || '---' %> </li>
+        </ul>
+      </summary>
+      <ul class="card__content lineitem-details">
+        <% presentable_attributes.select{ |k| item[k].present? }.each do |k| %>
+          <li>
+            <strong><%= item.class.human_attribute_name(k) %>:</strong>
+            <% if Marketplace::LineItem::CalibrationItem.defined_enums.has_key?(k.to_s) %>
+              <%= Marketplace::LineItem::CalibrationItem.human_enum_name(k, item.send(k)) %>
+            <% elsif item[k].kind_of?(Array) %>
+              <%= item.send(k).select(&:present?).join(', ') %>
+            <% else %>
+              <%= item.send(k) %>
+            <% end %>
+          </li>
+        <% end %>
+        <% if item.location.present? %>
+          <li><strong><%= t('activerecord.attributes.buyers/request.location')%>:</strong><%= item.location %></li>
+        <% end %>
+      </ul>
+    </details>
+  <% end %>
+</div>
+<% end %>
+
+<% if line_items.to_a.any?{ |e| e.process_type == "off_site" } %>
+<h4><%= t('calibrations.process_type.off_site')%></h4>
+<div class="lineitem-table">
+  <ul class="lineitem-table lineitem-header" >
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:device_name) %> </li>
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:manufacturer) %> </li>
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:device_type) %> </li>
+    <li> <%= Marketplace::LineItem::CalibrationItem.human_attribute_name(:quantity) %> </li>
+  </ul>
+
+  <% line_items.to_a.select{ |e| e.process_type == "off_site" }.each do |item| %>
+    <details class="l-grid-span--12 u-p0 " close %>
+      <summary class="l-grid-span--12 d--flex f-jc-sb l-grid-align-center-y">
+        <ul class="lineitem-table" >
+          <li class="d--inline-flex">
+              <span class="card__toggle d--flex">
+                <%= render(IconComponent.new(name: 'chevron-down', bold: true, classes: 'plus')) %>
+                <%= render(IconComponent.new(name: 'chevron-up', bold: true, classes: 'minus')) %>
+              </span>
+            <%= item[:device_name].presence || '---' %>
+          </li>
+          <li> <%= item[:manufacturer].presence || '---' %> </li>
+          <li> <%= item[:device_type].presence || '---' %> </li>
+          <li> <%= item[:quantity].presence || '---' %> </li>
+        </ul>
+      </summary>
+      <ul class="card__content lineitem-details">
+        <% presentable_attributes.select{ |k| item[k].present? }.each do |k| %>
+          <li>
+            <strong><%= item.class.human_attribute_name(k) %>:</strong>
+            <% if Marketplace::LineItem::CalibrationItem.defined_enums.has_key?(k.to_s) %>
+              <%= Marketplace::LineItem::CalibrationItem.human_enum_name(k, item.send(k)) %>
+            <% elsif item[k].kind_of?(Array) %>
+              <%= item.send(k).select(&:present?).join(', ') %>
+            <% else %>
+              <%= item.send(k) %>
+            <% end %>
+          </li>
+        <% end %>
+        <% if item.location.present? %>
+          <li><strong><%= t('activerecord.attributes.buyers/request.location')%>:</strong><%= item.location %></li>
+        <% end %>
+      </ul>
+    </details>
+  <% end %>
+</div>
+<% end %>
+

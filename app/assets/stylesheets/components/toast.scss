@@ -1,0 +1,51 @@
+toast-notification {
+  opacity: 0;
+  text-align: center;
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.2rem;
+  position: fixed;
+  z-index: 100;
+  top: 3rem;
+  transition: opacity 0.25s;
+  left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  background: var(--light-grey--80);
+  color: var(--grey--80);
+  font-size: 2rem;
+
+  &.toast--visible {
+    opacity: 1;
+  }
+
+  &.toast--dismissable {
+    padding-right: 1.5rem;
+    pointer-events: none;
+
+    &:after {
+      font-weight: 300;
+      position: absolute;
+      content: '✕';
+      text-align: center;
+      right: 0.6em;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      pointer-events: all;
+    }
+
+    a, button {
+      pointer-events: all;
+    }
+  }
+
+  &.toast--success {
+    background: var(--dark-green);
+    color: var(--white);
+  }
+
+  &.toast--error {
+    background: var(--red--120);
+    color: var(--white);
+  }
+}

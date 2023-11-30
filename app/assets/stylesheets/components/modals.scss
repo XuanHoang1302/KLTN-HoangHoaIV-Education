@@ -1,0 +1,253 @@
+.modal {
+  position: relative;
+  z-index: 99;
+}
+
+.modal .session__form {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#company-invite-member .modal__container {
+  max-width: 864px;
+  border-radius: 1rem;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 500px;
+  max-height: 100vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  #company-invite-member & {
+    padding: 6.5rem;
+  }
+}
+
+body:not(.session) .modal__container {
+  max-height: calc(100vh - 12.5rem);
+  top: 3.5rem;
+  position: relative;
+
+  .session__policy-box {
+    max-height: calc(100vh - 46rem);
+  }
+}
+
+.modal__close {
+  margin-left: auto;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__title {
+  @extend .h2;
+  margin-top: 2rem;
+  margin-bottom: 3.2rem;
+  text-align: center;
+
+  &#company-invite-member-title {
+    margin-bottom: 2rem;
+  }
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+  line-height: 1.5;
+}
+
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0,0,0,.8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff;
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.2rem;
+  margin-bottom: 2rem;
+
+  > * {
+    margin: 0.8rem;
+  }
+}
+
+
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
+}
+
+// Sweet Alert Adaptations
+
+.swal-title {
+  font-weight: bold;
+  font-size: 3.2rem;
+  line-height: 4.4rem;
+  margin-bottom: 5.6rem !important;
+}
+
+.swal-text {
+  font-size: 2rem;
+  line-height: 2.7rem;
+}
+
+.swal-button {
+  @extend .button;
+}
+
+.swal-button-container {
+  margin: 0.5rem 0.9rem;
+}
+
+.swal-button--cancel {
+  @extend .button--secondary;
+
+  &:active {
+    color: var(--grey--140);
+  }
+}
+
+.swal-button--confirm {
+  @extend .button--primary;
+
+  &:not([disabled]) {
+    &:hover, &:focus {
+      background-color: var(--button-bg--hover);
+    }
+    &:active {
+      background-color: var(--button-bg--active);
+    }
+  }
+}
+
+.swal-modal.vl-confirmation {
+  animation: none;
+}
+
+.swal-footer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0;
+  margin-top: 1.6rem;
+  padding-top: 1.6rem;
+}
+
+.swal-modal {
+  padding: 9rem;
+  > div {
+    color: var(--grey);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.swal-icon {
+  display: none;
+}

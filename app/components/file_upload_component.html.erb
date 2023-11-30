@@ -1,0 +1,22 @@
+<label class= "file-input" >
+  <%= @form.method(:file_field).super_method.call(@method, @options) %>
+
+  <%= tag.span(class: "instructions") do %>
+    <%= limits_message %>
+    <%= tag.span(class: "has-help--long has-help--absolute", help: t("form.file_field.help")) do %>
+      <%= render IconComponent.new(name: 'info', help: true) %>
+    <% end %>
+  <% end %>
+  <div class="d--flex file-input__actions">
+    <%= tag.span(class: 'button button--primary') do %>
+      <%= render IconComponent.new(name: 'upload') %>
+      <%= @options[:excel_only] ? t("form.file_field.excel") : t("form.file_field.upload") %>
+    <% end %>
+    <% if !@options[:excel_only] %>
+      <%= tag.span(class: 'button button--secondary', data: { action: "click->file-input#reset" }) do %>
+        <%= render IconComponent.new(name: 'x') %>
+        <%= t("form.file_field.reset") %>
+      <% end %>
+    <% end %>
+  </div>
+</label>

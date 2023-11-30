@@ -1,0 +1,29 @@
+<head>
+  <title>
+    KÖR | Labs <%= content_for?(:html_title) ? yield(:html_title) : "" %>
+  </title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= render 'shared/google_tag_manager' %>
+
+  <%= favicon_link_tag 'favicon/favicon.ico' %>
+  <%= favicon_link_tag "favicon/favicon-16x16.png", type: 'image/png', sizes: "16x16" %>
+  <%= favicon_link_tag "favicon/favicon-32x32.png", type: 'image/png', sizes: "32x32" %>
+  <%= favicon_link_tag "favicon/favicon-48x48.png", type: 'image/png', sizes: "48x48" %>
+  <%= favicon_link_tag "favicon/android-chrome-192x192.png", type: 'image/png', sizes: "192x192" %>
+  <%= favicon_link_tag "favicon/android-chrome-512x512.png", type: 'image/png', sizes: "512x512" %>
+  <%= favicon_link_tag "favicon/apple-touch-icon.png", rel: 'apple-touch-icon', type: 'image/png', sizes: "180x180" %>
+
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+
+  <%= content_for(:head) -%>
+
+  <%= render "shared/confirm_dialog_meta_tags" %>
+  <%= render "shared/trix_meta_tags" %>
+  <%= render 'magic_test/support' if Rails.env.test? %>
+</head>

@@ -1,0 +1,25 @@
+////////////////////////
+// NIAS Requests (PET)
+////////////////////////
+
+.nias {
+  &.sample {
+    margin-bottom: 1.2rem;
+  }
+
+  >.card {
+    padding-bottom: 1.2rem;
+  }
+
+  .avocado_green_content {
+    color: var(--avocado)
+  }
+
+  .light_grey_content {
+    color: var(--light-grey--140)
+  }
+
+  .dark_grey_content {
+    color: var(--dark-grey--40)
+  }
+}

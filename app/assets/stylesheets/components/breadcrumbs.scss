@@ -1,0 +1,81 @@
+////////////////////////
+// Breadcrumb Styles
+////////////////////////
+
+.breadcrumbs {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 2.8rem 0 0;
+    padding-left: 0;
+
+    .breadcrumb {
+        font-weight: 600;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+        a {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--grey--80);
+            text-decoration: underline;
+
+            svg {
+                height: 1.6rem;
+                stroke-width: 0.2rem;
+                color: var(--white);
+            }
+        }
+
+        &--back {
+            margin-right: 1rem !important;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--grey);
+                color: var(--white);
+                width: 2rem;
+                height: 2rem;
+                border-radius: 1rem;
+
+                &:hover, &:focus {
+                    background-color: var(--primary-green);
+                }
+
+                &:active {
+                    background-color: var(--primary-green--120);
+                }
+
+                &[disabled] {
+                    background-color: var(--grey--20);
+                    svg { color: var(--light-grey--120); }
+                }
+            }
+
+
+        }
+
+        &--current {
+            a {
+                color: var(--grey);
+                text-decoration: none;
+            }
+        }
+
+        &--spacer {
+            display: flex;
+            margin-top: 5px;
+
+            svg {
+                height: 1.2rem;
+                stroke-width: 0.3rem;
+            }
+        }
+
+        &:not(:first-child), &:not(:last-child) {
+        }
+    }
+}

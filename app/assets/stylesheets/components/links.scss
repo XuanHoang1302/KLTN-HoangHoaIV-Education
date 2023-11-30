@@ -1,0 +1,95 @@
+////////////////////////
+// Links
+////////////////////////
+
+// General Variables
+
+:root {
+  --link-text: var(--dark-blue--120);
+  --link-text--hover: var(--dark-blue--80);
+  --link-text--focus: var(--dark-green);
+  --link-text--active: var(--dark-blue--160);
+}
+
+// Styles
+
+a[href] {
+  color: var(--link-text);
+  font-weight: 600;
+
+  &:hover {
+    color: var(--link-text--hover);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    color: var(--link-text--focus);
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: var(--link-text--active);
+    text-decoration: underline;
+  }
+
+  &:disabled {
+    color: var(--link-text--disabled);
+    text-decoration: underline;
+  }
+
+  // Reverse Text Contexts
+
+  &.reverse {
+    --link-text: var(--yellow);
+    --link-text--hover: var(--yellow--40);
+    --link-text--focus: var(--yellow--40);
+    --link-text--active: var(--yellow--120);
+
+    font-weight: normal;
+  }
+
+  // Reverse Text (Footer)
+
+  &.footer {
+    --link-text: var(--grey--40);
+    --link-text--hover: var(--yellow);
+    --link-text--focus: var(--yellow);
+    --link-text--active: var(--yellow--120);
+
+    font-weight: normal;
+  }
+
+  // With Icons
+  &.left-icon {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.8rem;
+    }
+  }
+
+  &.right-icon {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-left: 0.8rem;
+    }
+  }
+}
+
+// "Disabled" Links
+
+a:not([href]) {
+  --link-text--disabled: var(--dark-blue--40);
+
+  color: var(--link-text--disabled);
+
+  &.reverse {
+    --link-text--disabled: var(--grey--40);
+  }
+  &.footer {
+    --link-text--disabled: var(--grey--80);
+  }
+}

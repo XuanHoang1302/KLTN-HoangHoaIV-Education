@@ -1,0 +1,11 @@
+<tr>
+  <td style="width: 5rem !important;"><strong><%= specific_migration? ? 'SMT' : 'OMT' %>:</strong></td>
+  <% %i[duration temperature simulant analyte].each do |attr| %>
+    <td>
+      <%= line_item_attribute_value(@migration_item, attr) %>
+    </td>
+  <%end %>
+  <td class="nias-price no-print">
+    <%= render Nias::LineItemPriceComponent.new(request: @request, customer_item: @migration) unless not_line_item? %>
+  </td>
+</tr>

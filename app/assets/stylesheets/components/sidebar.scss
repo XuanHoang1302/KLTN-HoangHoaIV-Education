@@ -1,0 +1,227 @@
+////////////////////////
+// Sidebar
+////////////////////////
+
+.sidebar {
+  --link-text: var(--white);
+  --link-text--hover: var(--white);
+  --link-text--focus: var(--white);
+  --link-text--active: var(--grey);
+
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 1 20rem;
+  width: 20rem;
+  padding-bottom: 1rem;
+  background-color: var(--grey);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  color: var(--link-text);
+  font-family: var(--font-display);
+
+  &--opened {
+    transition: opacity 0.2s ease-in;
+  }
+
+  & > ul,
+  & > ul ul {
+    display: block;
+    list-style: none;
+    padding: 0;
+  }
+
+  & > ul {
+    transition: opacity 0.2s ease-in-out;
+    transition-delay: 0.1s;
+
+    li.sidebar__logo {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      padding-top: 1.2rem;
+      margin-bottom: 3.4rem;
+      background-color: var(--grey);
+
+      a {
+        display: block;
+        opacity: 1;
+
+        &:active {
+          background-color: var(--link-text--active);
+        }
+      }
+
+      img {
+        display: block;
+        margin-left: auto;
+        width: 11rem;
+        stroke-width: 0;
+      }
+    }
+
+    li a {
+      display: flex;
+      align-items: center;
+      padding: var(--padding-sm);
+
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.025rem;
+      color: var(--link-text);
+      transition: background-color 0.1s ease-in;
+
+      svg {
+        stroke-width: 2px;
+        margin-right: var(--padding-sm);
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+      }
+
+      &:hover,
+      &:focus {
+        color: var(--link-text--hover);
+        background-color: var(--grey--80);
+      }
+
+      &:active {
+        color: var(--link-text--active);
+        background-color: var(--light-grey--5);
+      }
+    }
+  }
+
+  & > ul > li > a.selected {
+    position: relative;
+    background-color: var(--light-grey--40);
+    color: var(--link-text--active);
+
+    &:hover,
+    &:focus {
+      background-color: var(--grey--20);
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        box-shadow: 0 1rem 0 0 var(--grey--20);
+      }
+      &::after {
+        box-shadow: 0 -1rem 0 0 var(--grey--20);
+      }
+    }
+
+    // Weird inverted border radius things
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      height: 4rem;
+      width: 2rem;
+      background-color: transparent;
+      transition: box-shadow 0.1s ease-in;
+    }
+
+    &::before {
+      top: -4rem;
+      border-bottom-right-radius: 1rem;
+      box-shadow: 0 1rem 0 0 var(--light-grey--40);
+    }
+
+    &::after {
+      bottom: -4rem;
+      border-top-right-radius: 1rem;
+      box-shadow: 0 -1rem 0 0 var(--light-grey--40);
+    }
+  }
+
+  & > ul > li > a:not(.selected) + ul {
+    display: none;
+  }
+
+  ul ul {
+    background-color: var(--light-grey--20);
+
+    li { 
+      background-color: var(--light-grey--20); 
+      transition: background-color 0.1s ease-in;
+
+      &:hover ~ li , &:focus ~ li  {
+        background-color: var(--light-grey);
+      }
+    }
+
+    li:last-child a {
+      position: relative;
+    }
+
+    li:last-child > a:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      height: 4rem;
+      width: 2rem;
+      background-color: transparent;
+      transition: box-shadow 0.1s ease-in;
+      bottom: -4rem;
+      border-top-right-radius: 1rem;
+      box-shadow: 0 -1rem 0 0 var(--light-grey--20);
+    }
+
+    li:last-child > a:hover:after, li:last-child > a:focus:after,{
+      box-shadow: 0 -1rem 0 0 var(--light-grey);
+    }
+
+    li:last-child > a.selected:after {
+      box-shadow: 0 -1rem 0 0 var(--light-grey--80);
+    }
+    
+    a {
+      background-color: var(--light-grey--20);
+      color: var(--link-text--active);
+      border-top-right-radius: 1rem;
+
+      &:hover, &:focus {
+        background-color: var(--light-grey);
+        color: var(--link-text--active);
+      }
+
+      &.selected {
+        background-color: var(--light-grey--80);
+      }
+    }
+  }
+
+  &__base {
+    li.legal {
+      margin-top: 0.8rem;
+    }
+    li.legal span, li.legal a{
+      padding: 0.2rem var(--padding-sm);
+    }
+  }
+}
+
+// Collapsed Sidebar
+@keyframes content-hide {
+  0% { visibility: visible; }
+  99% { visibility: visible; }
+  100% { visibility: hidden; }
+}
+
+.sidebar--collapsed {
+  & > ul { opacity: 0; }
+
+  + main {
+    transition: all 0.2s ease-in;
+    margin-left: -19rem;
+    min-width: calc(100vw - 1rem);
+  }
+}

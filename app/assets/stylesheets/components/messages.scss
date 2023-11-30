@@ -1,0 +1,124 @@
+.message {
+	margin-top: 0.8rem
+}
+
+.message__origin--inbound {
+	margin-bottom: 0;
+	background-color: var(--sky-blue--140) !important;
+}
+.message__origin--outbound {
+	margin-bottom: 0;
+	background-color: var(--yellow) !important;
+}
+
+.message__info {
+	padding-left: 0;
+	list-style-type: none;
+
+	li {
+		background-color: var(--light-grey--40);
+		padding: 0.6rem 0.8rem;
+		border-radius: 0.4rem;
+		margin-bottom: 0.4rem;
+	}
+}
+
+// Style file attachments, import styles from mailer template
+
+.message {
+	img[width="600"][height="183"] {
+		display: none;
+	}
+	.file-input__file-list {
+		margin-top: 2.4rem;
+		margin-bottom: 0;
+	}
+
+	.trix-content {
+		text-align: left;
+
+		figure {
+			text-align: left;
+		}
+	}
+
+	.trix-content > * {
+		margin-bottom: 0.8rem;
+	}
+
+	h3 {
+		font-size: 1.6rem;
+		font-weight: bold;
+		line-height: 1;
+		margin-top: 2rem;
+	}
+
+	    /* What it does: Hover styles for buttons */
+    .button-td,
+    .button-a {
+        transition: all 100ms ease-in;
+        background-color: var(--trigo-green);
+        border-radius: 0.4rem;
+        padding: 0.4rem 0.8rem;
+        color: #fff;
+        margin-bottom: 1.6rem;
+    }
+    .button-td-primary:hover,
+    .button-a-primary:hover {
+        background: #B9D377, 100% !important;
+        border-color: #B9D377, 100% !important;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 600px) {
+
+        /* What it does: Adjust typography on small screens to improve readability */
+        .email-container p {
+            font-size: 17px !important;
+        }
+
+    }
+}
+
+.message__create-offer {
+	padding: 1.2rem 1.8rem 1.0rem !important;
+	line-height: 1.2 !important;
+	min-height: unset !important;
+	margin-bottom: -0.4rem !important;
+}
+
+.message__sender {
+	display: flex;
+	width: calc(100% - 2.4rem);
+	align-items: center;
+	float: right;
+	margin-top: -0.4rem;
+}
+
+details.message__container[open] summary.message--inbound {
+	margin-bottom: 2.8rem;
+}
+
+// Style events in messages.
+
+.message-event {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.message-event__marker {
+	display: inline-block;
+	margin-right: 1.2rem !important;
+}
+
+.message-event__title {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.message-event__timestamp {
+	display: inline-block;	
+	margin-left: auto;
+	font-weight: bold;
+}

@@ -1,0 +1,57 @@
+<% if @results.present? %>
+  <% @results.each do |result_type, result_list| %>
+    <% result_list.reject(&:declined_by_system?).each do |result| %>
+      <div class="l-grid u-mb2">
+        <div class="l-grid-span--4">
+          <strong class="d--block"><%= result_human_name(result_type) %>:</strong>
+          <%= link_to result.file.url, target: :blank do %>
+            <span class='file-badge'>
+              <%= result.file.filename %>
+              <%= render(IconComponent.new(name: 'download', bold: true)) %>
+            </span>
+          <% end %>
+        </div>
+
+        <div class="l-grid-span--5">
+          <strong class="d--block"><%= t('nias.pet_requests.show.submitted_on') %> :</strong>
+          <%= result.created_at.strftime("%Y.%m.%d %H:%M") %><br>
+        </div>
+
+        <div class="l-grid-span--3">
+          <div class="file-buttons-container">
+            <div class="file-buttons">
+              <% if result.pending? && result.file.attached?%>
+                <% if Nias::PetRequestPolicy.new(Current.user, @request).can_accept_or_decline_files? %>
+                  <%= button_to accept_nias_result_path(result.oid), method: :patch, class: 'accept accept-decline' do %>
+                    &check; Accept
+                  <% end %>
+                  <%= button_tag data: { micromodal_trigger: "decline-po-#{result.oid}" }, class: 'decline accept-decline' do %>
+                    &cross; Decline
+                  <% end %>
+                  <%= render ModalComponent.new(id: "decline-po-#{result.oid}", form_id: "decline-po-form-#{result.oid}", show_close: false, show_actions: false) do %>
+                    <%= form_with(id: "decline-po-form-#{result.oid}", url: decline_nias_result_path(result.oid), method: :patch) do |form| %>
+                      <h2>Are you rejecting the result?</h2>
+                      <%= form.text_area :decline_reason, rows: 5, placeholder: 'Write your description here' %>
+                      <footer class="d--flex f-jc-fe">
+                        <%= tag.button(class: 'button button--secondary', aria_label: t('aria.close_modal'), type: "button", data: { micromodal_close: '' }) do %>
+                          <%= t("cancel") %>
+                        <% end %>
+                        <%= form.submit('Reject result', class: 'button button--negative u-ml2') %>
+                      </footer>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <strong class="u-mr2">Status:</strong> <span class="tag"><%= render StatusWithTagComponent.new(result) %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="d--flex f-ai--center f-jc-center f-as-center u-pt7">
+    No result has been uploaded yet.
+  </div>
+<% end %>

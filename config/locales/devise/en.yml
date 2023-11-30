@@ -1,0 +1,73 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+en:
+  users:
+    registrations:
+      pending:
+        confirm_your_email: Confirm your email
+        instructions_secondary_html: "A verification link has been sent to <strong>%{email}</strong>. If you do not receive a confirmation email, check your spam folder or verify that you entered a valid email address while signing up."
+  devise:
+    errors:
+      messages:
+        not_found: not found. If you do have an account, please double-check your e-mail and password.
+    mailer:
+      confirmation_instructions:
+        subject: "Action required: Confirm account"
+        default_first_name: Friend
+        greeting: "Welcome to Labs, %{name}."
+        instruction_html: |
+          <p>You're receiving this message because you recently signed up for a <strong>Labs</strong> account.</p>
+
+          <p>Confirm your email address by clicking the button below. This step adds extra security to your account by verifying you own this email.</p>
+        action: Confirm account
+        support_text: we're here to help
+        expiry_info_html: "This link will expire in 24 hours."
+    sessions:
+      new:
+        sign_in: Sign in
+    registrations:
+      signed_up_but_unconfirmed: ''
+      new:
+        register_message: 'Labs is the leading platform for solving all lab capacity & competency needs.'
+        accept_policy_statement: "I agree to Labs' "
+        accept_policy: Accept
+        decline_policy: Decline
+        need_assistance: Need assistance?
+        contact_helpdesk: Contact our helpdesk
+        need_registration_help: Registration support request
+      edit:
+        title: My profile
+        personal_details: Personal details
+        personal_details_subhead: You can update your personal details by editing any of the fields below
+        are_you_sure: "If you proceed, we'll delete any memberships to companies, as well as any companies you've created. This is permanent and immediate."
+        currently_waiting_confirmation_for_email: "Currently awaiting confirmation for %{email}"
+        current_password_required: "To update your password, enter your current password and desired password"
+        save_changes: Save changes
+        change_password: Change password
+        change_profile_picture: Change profile picture
+        profile_picture_instructions: Click on the image to change your profile picture
+        language_currency: Language and currency
+        cancel_my_account: Cancel my account
+        cancel_my_account_description: Please contact support@kor-group.com
+        unhappy: Unhappy?
+    passwords:
+      new:
+        forgot_your_password: Forgot your password?
+        change_password: Reset your password
+        password_help: Enter the email address associated with your account and we'll send you instructions to reset your password
+      edit:
+        confirm_new_password: Confirm password
+    shared:
+      minimum_password_length: "%{count} characters minimum"
+      terms_and_conditions: General Terms & Conditions
+      privacy_policy: Privacy Policy
+      provider_terms_and_conditions: Vendor Terms & Conditions
+      links:
+        sign_in: Sign in
+    failure:
+      invalid: Invalid email or password. If you do have an account, please double-check your e-mail and password.
+      not_found_in_database: Invalid email or password. If you do have an account, please double-check your e-mail and password.
+
+      # We don't want to display this message, so we're setting it to an empty string
+      # because empty flash messages are not rendered by `app/views/shared/_flashes.html.erb`
+      unauthenticated: ''

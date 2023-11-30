@@ -1,0 +1,119 @@
+.metric-header-text {
+  font-size: 70%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: -20%;
+  width: fit-content;
+  border: 0.1em solid var(--grey--20);
+  border-radius: 5px;
+  padding: 4%;
+  &.red {
+    background: var(--red--20);
+  }
+  &.green {
+    background: var(--dark-green--20);
+  }
+  &.yellow {
+    background: var(--yellow--20);
+  }
+}
+
+.metric-header-container {
+  .l-grid {
+    grid-template-columns: repeat(18, 1.5%);
+    padding-bottom: 3%;
+    padding-left: 2%;
+    column-gap: 4%;
+  }
+}
+
+.metrics-matched-services-container{
+  border-top: 1px solid var(--grey--20);
+  .text{
+    font-weight: bold;
+    font-size: 70%;
+    padding-top: 2%;
+  }
+  .l-grid{
+    padding-left: 2.5%;
+  }
+  .popup .popuptext {
+    visibility: hidden;
+    width: 50vh !important;
+    height: 50vh !important;
+    background-color: white;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    bottom: -7.6rem !important;
+    right: -13rem !important;
+    margin-left: -80px;
+  }
+}
+
+.metric-key{
+  font-weight: bold;
+  margin-right: 2%;
+}
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+}
+.stat-canvas{
+  width: 60vh !important;
+  height: 40vh !important;
+  background-color: white;
+  border: 1px solid var(--primary-green--40);
+  border-radius: 5px;
+}
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 50vh !important;
+  height: 50vh !important;
+  background-color: white;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  bottom: 50%;
+  right: 30% !important;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  position: absolute;
+  top: 50%;
+  right: 30%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--primary-green--40) transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+.metrics-span-header{
+  color: var(--grey--140);
+  font-size: 70%;
+  font-weight: bold;
+}
+.metrics-text-container{
+  border-bottom: 1px solid var(--grey--20);
+}

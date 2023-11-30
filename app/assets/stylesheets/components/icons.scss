@@ -1,0 +1,58 @@
+////////////////////////
+// Icons
+////////////////////////
+
+// TODO: Update this so we're not using a CDN ultimately...
+
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.icon--help {
+  stroke-width: 0.3rem;
+  color: var(--grey--80);
+  width: 1.4rem;
+}
+
+.button--primary .icon--help {
+  color: var(--white);
+}
+
+.icon--bold {
+  stroke-width: 2;
+}
+
+.icon--tag {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.4rem;
+}
+
+.icon-ornament {
+  width: 15rem;
+  height: 15rem;
+  margin: 3.6rem auto 0;
+}
+
+// Griddy container when an icon is paired with a text element
+
+.icon__container-with-text {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  grid-gap: 0.8rem;
+  align-items: center;
+}
+
+a[href].icon__container-with-text {
+  font-weight: normal;
+}
+
+.fill-grey {
+  fill: var(--grey--120);
+}

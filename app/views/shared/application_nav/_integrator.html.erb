@@ -1,0 +1,86 @@
+<li data-guided-tour-id="dashboard">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.dashboard'), href: dashboard_path, icon: :grid)) %>
+</li>
+
+<li data-guided-tour-id="company">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_company'), href: applications_companies_path, icon: :home, active_strategy: :inclusive)) %>
+</li>
+
+<%= tag.li do %>
+  <%= render(NavLinkComponent.new(title: Tender.model_name.human.pluralize, href: tenders_path, icon: 'file-text', active_strategy: :inclusive)) %>
+<% end %>
+
+<%= tag.li do %>
+  <%= render(NavLinkComponent.new(title: t('layouts.application.customer_cases'), href: customer_cases_path, icon: 'file-text', active_strategy: :inclusive)) %>
+<% end %>
+
+<li data-guided-tour-id="services">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_services'), href: services_path, icon: :briefcase, active_strategy: :inclusive)) %>
+
+  <ul>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.new_service'), href: new_service_path, icon: 'plus-circle') %>
+    </li>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.manage_services'), href: services_path, icon: 'settings') %>
+    </li>
+  </ul>
+</li>
+
+<li data-guided-tour-id="requests">
+  <%= render NavLinkComponent.new(title: t('layouts.application.my_request'), href: requests_path, icon: 'file-text', active_strategy: /requests/) %>
+  <ul>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.request_to_customer'), href: request_to_customer_requests_path, icon: 'file-text', active_strategy: /requests\/request_to_customer/) %>
+    </li>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.request_to_vendor'), href: request_to_vendor_requests_path, icon: 'file-text', active_strategy: /requests\/request_to_vendor/) %>
+    </li>
+  </ul>
+</li>
+
+<li data-guided-tour-id="offers">
+  <%= render NavLinkComponent.new(title: t('layouts.application.my_offers'), href: offers_path, icon: 'file-text', active_strategy: /offers/) %>
+  <ul>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.offer_to_customer'), href: offer_to_customer_offers_path, icon: 'file-text', active_strategy: /offers\/offer_to_customer/) %>
+    </li>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.offer_to_vendor'), href: offer_to_vendor_offers_path, icon: 'file-text', active_strategy: /offers\/offer_to_vendor/) %>
+    </li>
+    <li>
+      <%= render NavLinkComponent.new(title: t('layouts.application.indicative_offer'), href: offers_indicative_integrator_index_path, icon: 'file-text', active_strategy: /offers_indicative_integrator/) %>
+    </li>
+  </ul>
+</li>
+
+
+
+<li data-guided-tour-id="orders">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_orders'), href: orders_path, icon: :tag, active_strategy: /orders|deliveries|profomas|invoices/)) %>
+  <ul>
+    <%= tag.li do %>
+      <%= render(NavLinkComponent.new(title: "Orders", href: orders_path, icon: 'file-text', active_strategy: :inclusive)) %>
+    <% end if Current.context.integrator? %>
+
+    <%= tag.li do %>
+      <%= render(NavLinkComponent.new(title: "Deliveries", href: deliveries_orders_path, icon: 'file-text', active_strategy: :inclusive)) %>
+    <% end if Current.context.integrator? %>
+
+    <%= tag.li do %>
+      <%= render(NavLinkComponent.new(title: "Proformas", href: profomas_orders_path, icon: 'file-text', active_strategy: :inclusive)) %>
+    <% end if Current.context.integrator? %>
+
+    <%= tag.li do %>
+      <%= render(NavLinkComponent.new(title: "Invoices", href: invoices_path, icon: 'file-text', active_strategy: :inclusive)) %>
+    <% end if Current.context.integrator? %>
+  </ul>
+</li>
+
+<li>
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_activity'), href: activities_path, icon: :activity)) %>
+</li>
+
+<li>
+  <%= render(NavLinkComponent.new(title: t('layouts.application.document_library'), href: documents_path, icon: :file)) %>
+</li>

@@ -1,0 +1,16 @@
+<div class="stepper-wrapper">
+  <% @step.each_with_index do |step, index| %>
+    <div class="stepper-item <%= step[:status] == 2 ? 'invalid': '' %><%= step[:status] == 1 ? 'valid': '' %>" data-controller="scroll-into-view" data-action="click->scroll-into-view#scrollIntoId" name="<%= step[:refTo] %>">
+      <div class="step-counter">
+        <div class="step-number">
+          <% if step[:status] == 0 || step[:status] == 2 %>
+            <%= index + 1 %>
+          <% else %>
+            <%= render(IconComponent.new(name: "check")) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="step-name"><%= step[:label] %></div>
+    </div>
+  <% end %>
+</div>

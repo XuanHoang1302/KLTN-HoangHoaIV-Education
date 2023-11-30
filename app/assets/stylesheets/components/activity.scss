@@ -1,0 +1,247 @@
+////////////////////////
+// Activity Styles
+////////////////////////
+
+.activity-list {
+    padding-left: 0;
+    list-style-type: none;
+
+    li {
+        display: flex;
+        align-items: center;
+        height: 6.3rem;
+
+        .activity-list__timestamp {
+            flex: 0 0 5.4rem;
+            text-align: right;
+
+            .time {
+                display: block;
+                font-size: 1rem;
+                line-height: 1.4rem;
+            }
+            .date {
+                display: block;
+                font-size: 1.2rem;
+                line-height: 2rem;
+                text-transform: capitalize;
+            }
+        }
+        .activity-list__graphic {
+            flex: 0 0 4.1rem;
+            position: relative;
+
+            padding: 0 2.4rem 0 1.6rem;
+
+            &:before {
+                background-color: var(--sky-blue--40);
+
+                position: absolute;
+                z-index: 2;
+                content: '';
+                width: 1.3rem;
+                height: 1.3rem;
+                border-radius: 0.7rem;
+                border: 2px solid var(--white);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &:after {
+                position: absolute;
+                z-index: 1;
+                content: '';
+                width: 0.1rem;
+                background-color: var(--sky-blue--40);
+                height: 6.3rem;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .activity-list__name {
+            font-size: 1.4rem;
+            line-height: 2.4rem;
+        }
+
+        &:first-child {
+            .activity-list__graphic:after {
+                height: 3.1rem;
+                top: 0;
+                transform: translateX(calc(50% - 1px));
+            }
+        }
+
+        &:last-child {
+            .activity-list__graphic:after {
+                height: 3.1rem;
+                bottom: 0;
+                top: unset;
+                transform: translateX(calc(50% - 1px));
+            }
+        }
+    }
+}
+
+.activity-table__container {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+table.activity-table { // For Activity section of app
+    overflow-x: scroll;
+    border: none;
+    box-shadow: none;
+    position: relative;
+
+    tbody tr td { background-color: var(--light-grey--40);}
+
+    &.table td, &.table th {
+        padding: 10px;
+        border-width: 0rem;
+        border-left: 0.5rem solid var(--white) !important;
+        border-right: 0.5rem solid var(--white) !important;
+        border-bottom: 1rem solid var(--white) !important;
+        border-color: var(--white);
+    }
+
+    &.table th {
+        &:first-child {
+            border-left: none !important;
+        }
+
+        &:last-child {
+            border-right: none !important;
+        }
+    }
+
+    &.table td {
+        vertical-align: top;
+
+        &:first-child, &:nth-child(2), &:nth-child(4), &:nth-child(6) {
+            border-left: none !important;
+        }
+
+        &:last-child, &:nth-child(3), &:nth-child(5) {
+            border-right: none !important;
+        }
+    }
+
+    &.table tr th:first-child, &.table tr td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        border-right: 1rem solid var(--white) !important;
+    }
+
+    a.activity-table__tile {
+      --tile-bg: var(--light-grey--40);
+      --tile-bg-hover: var(--light-grey--80);
+
+      display: block;
+      width: 18rem;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      background-color: var(--tile-bg);
+      border-radius: 0.25rem;
+      color: var(--text);
+
+      &:hover, &:focus {
+        text-decoration: none;
+        background-color: var(--tile-bg-hover);
+        color: inherit;
+      }
+
+      &:last-child { margin-bottom: 0;}
+
+      p {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+
+        &:last-child { margin-bottom: 0;}
+      }
+
+      p.activity-table__tile__split-line {
+        display: flex;
+        justify-content: space-between;
+
+        strong, em, span {
+            display: inline-block;
+        }
+      }
+
+      &.activity-table__tile--message {
+        --tile-bg: var(--sky-blue--40);
+        --tile-bg-hover: var(--sky-blue--80);
+
+        color: var(--text);
+      }
+
+      &.activity-table__tile--draft {
+        --tile-bg: #F2994A;
+        --tile-bg-hover: #ca7225;
+
+        color: var(--white);
+      }
+
+      &.activity-table__tile--waiting {
+        --tile-bg: var(--trigo-green);
+        --tile-bg-hover: var(--primary-green--120);
+
+        color: var(--white);
+      }
+
+      &.activity-table__tile--blocked {
+        --tile-bg: #c94c86;
+        --tile-bg-hover: #a52d65;
+
+        color: var(--white);
+      }
+      &.activity-table__tile--high-priority-need {
+        --tile-bg: var(--yellow--20);
+        --tile-bg-hover: var(--yellow--40);
+      }
+    }
+}
+
+// Loading wheel
+
+.lds-ring {
+  margin: 0 auto 0.75rem;
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  margin: 8px;
+  border: 6px solid var(--light-grey);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--light-grey) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

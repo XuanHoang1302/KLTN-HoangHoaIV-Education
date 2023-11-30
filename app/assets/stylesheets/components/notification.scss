@@ -1,0 +1,181 @@
+////////////////////////
+// Notification Styles
+////////////////////////
+
+.notification {
+
+  .l-grid-span--12 > & {
+    margin-top: 2rem;
+  }
+
+  .l-content > .l-grid-span--12 > & {
+    margin-bottom: 1rem;
+  }
+
+  // Standard Informative Base
+
+  display: grid;
+  grid-gap: 0.8rem;
+  grid-template-columns: min-content auto;
+  margin-bottom: var(--padding-md);
+  padding: 1.2rem 1.6rem;
+  border-radius: 1rem;
+  background-color: var(--light-blue);
+  font-family: var(--font-display);
+  color: var(--text);
+  box-shadow: var(--shadow--high);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .notification__icon {
+    display: flex;
+    padding: 0 !important;
+    margin-bottom: 0;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 0.2rem;
+    color: var(--grey--80);
+  }
+
+  &__message {
+    padding: 0 !important;
+
+    * {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+    }
+    *:first-child {
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 2rem;
+    }
+
+  }
+
+  // Variants
+
+  //// Error
+
+  &--error {
+    background-color: var(--red);
+    color: var(--white);
+
+    svg { color: var(--white); }
+  }
+
+  //// Success
+
+  &--success {
+    background-color: var(--primary-green--40);
+    color: var(--text);
+
+    svg { color: var(--primary-green--120); }
+  }
+
+  //// Coming Soon
+
+  &--coming-soon {
+    background-color: var(--yellow);
+    color: var(--white);
+
+    svg { color: var(--white); }
+  }
+}
+
+
+//// Changes Requested Component
+
+.notification--changes-requested {
+  margin-bottom: 2rem !important; 
+  background-color: var(--yellow--80);
+
+  > * {
+    grid-column-end: span 2;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+
+    span {
+      display: inline-block;;
+    }
+
+    > span:first-child {
+      margin-top: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  svg { 
+    width: 2.4rem;
+    height: 2.4rem;
+    color: var(--grey); 
+  }
+  
+
+  .notification__message {
+    display: block;
+    width: 100%;
+    min-height: 4.8rem;
+    padding: 1.4rem 1.6rem 1rem !important;
+    margin-bottom: 0.4rem;
+    background-color: var(--light-grey--20);
+    border-radius: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+
+// For notification text blocks within other containers
+
+.notification-text {
+  display: block;
+  width: 100%;
+  min-height: 4.8rem;
+  padding: 1.4rem 1.6rem 1rem !important;
+  margin-bottom: 0.4rem;
+  background-color: var(--light-grey--40);
+  border-radius: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+// In-header notifications
+
+.button:active .header-notification {
+  color: var(--text);
+}
+
+.header-notification {
+  position: relative;
+  padding: 2.4rem 3.2rem;
+  font-size: 12px;
+  font-weight: normal;
+  border-bottom: 1px solid var(--light-grey--40);
+
+  &__timestamp {
+    display: block;
+    font-size: 10px;
+    color: var(--light-grey--140);
+  }
+
+  &.new:before {
+    content: '•';
+    color: var(--yellow);
+    position: absolute;
+    left: 1.6rem;
+    top: 1.8rem;
+    font-size: 24px;
+  }
+}

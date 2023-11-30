@@ -1,0 +1,14 @@
+<%= tag.div id: @id,
+            class: "notification#{style}",
+              data: {
+                controller: token_list("scroll-into-view": @auto_scroll),
+                turbo_cache: false
+              } do %>
+  <div class="notification__icon">
+    <%= render(IconComponent.new(name: @icon)) %>
+  </div>
+  <div class="notification__message">
+    <%= message %>
+    <%= details %>
+  </div>
+<% end %>

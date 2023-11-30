@@ -1,0 +1,88 @@
+.card-header-match{
+  position: absolute;
+  top: -8%;
+  left: -4%;
+  border: 0.2rem solid var(--grey--20);
+}
+.match-container{
+  position: relative;
+  display: inline-block;
+  .card__vendor{
+    margin-top: 1rem;
+    margin-bottom: 1em;
+    color: var(--grey--80);
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  .tag--solid{
+    &.high-risk {
+      --tag-bg: var(--red--40);
+      --tag-text: var(--white);
+      border-radius: 1rem;
+    }
+
+    &.medium-risk {
+      --tag-bg: var(--yellow--40);
+      --tag-text: var(--grey--140);
+      border-radius: 1rem;
+    }
+
+    &.low-risk {
+      --tag-bg: var(--dark-green--40);
+      --tag-text: var(--white);
+      border-radius: 1rem;
+    }
+
+    &.unset-risk {
+      --tag-bg: var(--light-grey--40);
+      --tag-text: var(--light-grey--140);
+      border-radius: 1rem;
+    }
+  }
+  .l-grid{
+    margin-top: 1.2rem;
+  }
+  .l-grid-span--4{
+    margin-top: 2.2rem;
+  }
+}
+
+.card-tag-container{
+  max-width: 50%;
+  .card-tag{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+.search-card-icons {
+  display: flex;
+  flex-direction: column;
+  svg {
+    margin-right: 0.8rem;
+    width: 1.6rem;
+    height: 2.4rem;
+  }
+  p, h2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  strong {
+    margin-right: 0.8rem;
+  }
+}
+.search-card-title{
+  display: flex;
+  margin-bottom: 0;
+  color: var(--grey--140);
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  font-weight: bold;
+}
+

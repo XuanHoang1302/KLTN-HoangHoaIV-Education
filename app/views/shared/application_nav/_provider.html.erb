@@ -1,0 +1,36 @@
+<% nias_profile = Current.company.permissions.include?('Petcore Functional Barrier') %>
+<li data-guided-tour-id="dashboard">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.dashboard'), href: dashboard_path, icon: :grid)) %>
+</li>
+
+<% unless nias_profile %>
+<li data-guided-tour-id="projects">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.projects'), href: projects_path, icon: :layers, active_strategy: :inclusive)) %>
+</li>
+<% end %>
+
+<li data-guided-tour-id="company">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_company'), href: companies_path, icon: :home, active_strategy: :inclusive)) %>
+</li>
+
+<% unless nias_profile %>
+<li data-guided-tour-id="services">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_services'), href: services_path, icon: :briefcase, active_strategy: :inclusive)) %>
+</li>
+
+<li data-guided-tour-id="requests">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_request'), href: requests_path, icon: :"file-text", active_strategy: /requests|offers/)) %>
+</li>
+
+<li data-guided-tour-id="orders">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.my_orders'), href: orders_path, icon: :tag, active_strategy: /^\/orders|invoices/)) %>
+</li>
+
+<li>
+  <%= render(NavLinkComponent.new(title: t('layouts.application.document_library'), href: documents_path, icon: :file)) %>
+</li>
+<% else %>
+<li data-guided-tour-id="purchase-orders">
+  <%= render(NavLinkComponent.new(title: t('layouts.application.purchase_orders'), href: purchase_orders_path, icon: :tag, active_strategy: :inclusive)) %>
+</li>
+<% end %>

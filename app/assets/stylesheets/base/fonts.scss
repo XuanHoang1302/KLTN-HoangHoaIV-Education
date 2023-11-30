@@ -1,0 +1,82 @@
+////////////////////////
+// Font Imports
+////////////////////////
+
+// Display Face: Noto Sans
+
+// Light
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: font-url('notosans-light-webfont.eot');
+    src: font-url('notosans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('notosans-light-webfont.woff') format('woff'),
+         font-url('notosans-light-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+// Regular
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: font-url('notosans-regular-webfont.eot');
+    src: font-url('notosans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('notosans-regular-webfont.woff') format('woff'),
+         font-url('notosans-regular-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+// Italic
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: font-url('notosans-italic-webfont.eot');
+    src: font-url('notosans-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('notosans-italic-webfont.woff') format('woff'),
+         font-url('notosans-italic-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+// Semibold
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: font-url('notosans-semibold-webfont.eot');
+    src: font-url('notosans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('notosans-semibold-webfont.woff') format('woff'),
+         font-url('notosans-semibold-webfont.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+// Bold
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: font-url('notosans-bold-webfont.eot');
+    src: font-url('notosans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('notosans-bold-webfont.woff') format('woff'),
+         font-url('notosans-bold-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+// Extra Bold
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: font-url('notosans-extrabold-webfont.eot');
+    src: font-url('notosans-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('notosans-extrabold-webfont.woff') format('woff'),
+         font-url('notosans-extrabold-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}

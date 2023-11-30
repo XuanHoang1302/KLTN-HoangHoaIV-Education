@@ -1,0 +1,176 @@
+////////////////////////
+// Stepper Styles
+////////////////////////
+
+.stepper {
+  width: 100%;
+
+  --step-background-color: var(--white);
+  --step-stroke-color: var(--light-grey);
+  --step-header-color: var(--grey--80);
+  --step-subhead-color: var(--grey--40);
+  --step-stroke-width: 0.1rem;
+
+  svg path {
+    fill: var(--step-background-color);
+    stroke: var(--step-stroke-color);
+  }
+
+  ol {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 0;
+    padding-left: 0;
+    list-style-type: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    li { margin-left: -0.2rem; }
+    li:first-child { margin-left: 0; }
+  }
+
+  li.current {
+    --step-background-color: var(--white);
+    --step-stroke-color: var(--grey);
+    --step-header-color: var(--grey--80);
+    --step-subhead-color: var(--grey--40);
+    --step-stroke-width: 0.1rem;
+  }
+
+  li.complete {
+    --step-background-color: var(--light-grey--40);
+    --step-stroke-color: var(--light-grey);
+    --step-header-color: var(--grey--40);
+  }
+
+  li.complete.current {
+    --step-header-color: var(--grey--80);
+    --step-background-color: var(--white);
+    --step-stroke-color: var(--grey);
+  }
+
+  li,
+  li > a {
+    display: flex;
+    align-items: initial;
+    position: relative;
+    text-decoration: none;
+  }
+
+  li > svg,
+  li > a > svg {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 2.4rem;
+    stroke-width: var(--step-stroke-width);
+  }
+
+  .stepper__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 18rem;
+    min-height: 5.4rem;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    padding: 0.8rem;
+    position: relative;
+    z-index: 2;
+
+    span {
+      display: block;
+      min-width: 10rem;
+      margin-left: -0.2rem;
+      margin-right: -0.2rem;
+      position: relative;
+      z-index: 3;
+      text-align: left;
+      font-weight: 600;
+      line-height: 1.8rem;
+      font-size: 1.4rem;
+      color: var(--step-header-color);
+    }
+
+    span.subhead {
+      font-weight: normal;
+      font-size: 1.2rem;
+      color: var(--step-subhead-color);
+    }
+
+    > svg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      height: 100%;
+      width: 100%;
+      stroke-width: var(--step-stroke-width);
+    }
+  }
+
+  a, a:hover, a:focus, a:active {
+    text-decoration: none;
+  }
+
+  li.complete .stepper__text > span:first-of-type:before {
+    content: '';
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.6rem;
+    top: 3px;
+    margin-right: 0.4rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23656C78' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: cover;
+    position: relative;
+  }
+
+  li.complete {
+    > a > .stepper__text > span:first-of-type:before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23B2B5BB' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+  }
+
+  li.complete.current {
+    > a > .stepper__text > span:first-of-type:before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23656C78' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+  }
+
+  li.complete:hover, li.complete:focus {
+    --step-background-color: var(--sky-blue--20);
+    --step-stroke-color: var(--sky-blue--120);
+    --step-header-color: var(--sky-blue--120);
+    --step-subhead-color: var(--sky-blue--120);
+
+    > a > .stepper__text > span:first-of-type:before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234B9DC5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+  }
+
+  &.no-link li.complete:hover, &.no-link li.complete:focus {
+    --step-background-color: var(--light-grey--40);
+    --step-stroke-color: var(--light-grey);
+    --step-header-color: var(--grey--40);
+    --step-subhead-color: var(--grey--40);
+  }
+  &.no-link li.complete.current, &.no-link li.complete.current {
+    --step-header-color: var(--grey--80);
+  }
+  &.no-link li.complete.current:hover, &.no-link li.complete.current:focus {
+    --step-background-color: var(--white);
+    --step-stroke-color: var(--grey);
+  }
+}
+
+// Left-Aligned Stepper
+
+.stepper--left {
+  ol {
+    justify-content: flex-start;
+  }
+}

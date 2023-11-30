@@ -1,0 +1,17 @@
+hu:
+  devise:
+    registrations:
+      new:
+        register_message: 'A Labs a vezető platform az összes laboratóriumi kapacitás és kompetencia igény kielégítésére.'
+        consent_html: 'A "Regisztráció" gombra kattintva elfogadom %{terms_link} és %{privacy_policy_link}.'
+    shared:
+      minimum_password_length: '%{count} jelszóhossz minimális'
+      terms_and_conditions: Felhasználási feltételek
+      privacy_policy: Adatvédelmi irányelvek
+    failure:
+      invalid: Rossz email cím vagy jelszó.
+      not_found_in_database: Rossz email cím vagy jelszó.
+
+      # We don't want to display this message, so we're setting it to an empty string
+      # because empty flash messages are not rendered by `app/views/shared/_flashes.html.erb`
+      unauthenticated: ''

@@ -1,0 +1,200 @@
+ul.spaceship-bundle-attributes {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  padding: 0;
+
+  & > li {
+    width: 50%;
+    margin: 0 0 -1px -1px;
+    border: 1px solid var(--light-grey);
+    display: flex;
+
+    & > strong,span {
+      padding: 1rem;
+    }
+
+    & > strong {
+      width: 50%;
+      border-right: 1px solid var(--light-grey);
+    }
+  }
+}
+
+.spaceship-items {
+  details {
+    border: 1px solid;
+    border-bottom: none;
+    border-color: var(--light-grey);
+
+    & > summary {
+      list-style: none;
+      display: flex;
+      flex-flow: row nowrap;
+
+      & > .test {
+        width: 30%;
+        padding: 1rem;
+
+        & > .item-attributes {
+          font-size: 1.2rem;
+        }
+      }
+      & > .method {
+        border-left: 1px solid var(--light-grey);
+        padding: 1rem;
+        width: 50%;
+      }
+      & > .workflow {
+        border-left: 1px solid var(--light-grey);
+        padding: 1rem;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & > .price {
+          font-weight: 600;
+          color: var(--grey--40);
+          text-align: right;
+        }
+        & > .status {
+          line-height: 0;
+          align-self: flex-end;
+        }
+      }
+    }
+
+    .toggle-up { display: none; };
+    .toggle-down { display: block; };
+    &[open] {
+      .toggle-up { display: block; };
+      .toggle-down { display: none; };
+    }
+
+    & > .results {
+      border-top: 1px dashed var(--light-grey);
+      background-color: var(--light-grey--40);
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+
+  & > .price-summary {
+    border: 1px solid transparent;
+    border-top: 1px solid var(--light-grey);
+    border-right: 1px solid var(--light-grey);
+    display: flex;
+    flex-flow: row-reverse nowrap;
+
+    & > div {
+      width: 20%;
+      padding: 1rem;
+      border-left: 1px solid;
+      border-bottom: 1px solid;
+      border-color: var(--light-grey);
+      border-top: none;
+      text-align: right;
+    }
+  }
+}
+
+.spaceship-items > details > .results > .result {
+  width: 100%;
+  padding: 0;
+  border-bottom: 1px dashed var(--light-grey);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  .upload-button {
+    width: 30%;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .upload-icon {
+      stroke-width: 2px;
+      height: 2rem;
+      vertical-align: text-bottom;
+      margin-right: 1rem;
+    }
+  }
+
+  .upload-results {
+    width: 70%;
+
+    .upload-result {
+      display: flex;
+      flex-flow: row nowrap;
+
+      & > .upload-result-file {
+        width: 71%;
+        padding: 1rem;
+      }
+
+      & > .upload-result-status {
+        width: 29%;
+        padding: 1rem;
+
+        input[type=submit] {
+          display: inline-block;
+          background: var(--dark-green--20);
+          color: var(--dark-green--80);
+          border: 0.1rem solid var(--dark-green--40);
+          border-radius: 3px;
+          min-height: 2em;
+          font-size: 1em;
+          font-weight: 600;
+          &:hover {
+            background: var(--dark-green--40);
+            color: var(--dark-green--120);
+            border: 0.1rem solid var(--dark-green--80);
+          }
+        }
+
+        .icon{
+          color: var(--red);
+        }
+      }
+    }
+  }
+}
+
+.invoices {
+  .card {
+    border-style: dashed;
+    background: var(--light-grey--40);
+  }
+  .button {
+    @extend .button;
+    border-radius: 0.5rem!important;
+    justify-content: left!important;
+  }
+  a {
+    color: var(--grey)!important;
+  }
+  .invoices-list {
+    align-items: center;
+  }
+  .action-buttons {
+    display: inline-flex;
+    justify-content: right;
+  }
+  .attention-title {
+    color: var(--yellow--80);
+    font-size: 1.6rem;
+  }
+  .attention-text {
+    margin-bottom: 0;
+  }
+}

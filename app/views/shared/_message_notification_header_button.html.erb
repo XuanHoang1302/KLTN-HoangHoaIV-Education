@@ -1,0 +1,11 @@
+<% if local_assigns.has_key?(:consultation) %>
+  <% unread_messages = consultation&.messages&.unread&.count || 0 %>
+  <%= link_to consultation ? consultation_messages_path(consultation) : '#', class: 'message-button button button--secondary button--icon button--icon--small u-mb0', target: '_blank', rel: 'noopener noreferrer', help: unread_messages ? t('common.unread_messages', count: unread_messages) : t('common.no_new_messages') do %>
+    <%= render(IconComponent.new(name: 'mail')) %>
+    <% if unread_messages > 0 %>
+      <!-- If there are new messages, we want to show the message indicator along with the number of new messages, plus modify the help text above and accessibility text below to read "# new messages" -->
+      <span class="message-button__indicator"><%= unread_messages %></span>
+    <% end %>
+    <span class="visually-hidden"><%= unread_messages ? t('common.unread_messages', count: unread_messages) : t('common.no_new_messages') %></span>
+  <% end %>
+<% end %>

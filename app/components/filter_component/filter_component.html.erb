@@ -1,0 +1,12 @@
+<div class="field" <%= @addition_style %>>
+  <% if @options.present? %>
+    <div class="select">
+      <select data-controller="filter-helper" data-action="change->filter-helper#applySelectFilter" name="filter_by[<%= "#{@model}.#{@attribute}" %>]" id="filter_by_<%= "#{@model}_#{@attribute}" %>">
+        <option value=""><%= @attribute.to_s.titleize%></option>
+        <% @options.each do |option| %>
+          <option value="<%= option %>" <%= 'selected' if option_selected?(option) %>><%= translation_for(option) %></option>
+        <% end %>
+      </select>
+    </div>
+  <% end %>
+</div>

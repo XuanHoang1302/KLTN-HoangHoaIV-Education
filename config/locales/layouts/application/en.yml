@@ -1,0 +1,72 @@
+en:
+  layouts:
+    application:
+      admin: Admin
+      dashboard: Dashboard
+      projects: Project hub
+      toggle_menu: Toggle menu
+      messages: Messages
+      notifications: Notifications
+      help: Help
+      incoming_orders: Incoming orders
+      invoices: Invoices
+      language: Language
+      manage: Manage
+      my_request: Requests
+      customer_cases: NIAS cases
+      my_services: My services
+      new_service: New service
+      manage_services: Manage services
+      my_company: My company
+      my_activity: Activity
+      my_orders: Orders
+      orders_and_invoices: Orders & Invoices
+      outgoing_orders: Outgoing orders
+      order_history: Order history
+      new_request: New request
+      needs: Needs
+      new_need: New need
+      calibration: Calibration
+      nias_analysis: NIAS analysis
+      calibration_requests: Calibration Request
+      gauge_management: My Gauges
+      manage_requests: Manage requests
+      request_to_vendor: Request to vendor
+      request_to_customer: Customer Request
+      offer_to_vendor: Offer from Vendor
+      indicative_offer: Indicative Offer
+      offer_to_customer: Offer to Customer
+      incoming_request: Incoming Request
+      outgoing_request: Outgoing Request
+      outgoing_offers: Outgoing Offers
+      incoming_offers: Incoming Offers
+      my_offers: Offers
+      messages: Messages
+      company_center: Company center
+      company_users: Users
+      document_library: Document library
+      requests_offers: Requests & offers
+      orders: Orders
+      message_center: Message center
+      reports: Reports
+      system_settings: System settings
+      act_as: Act as
+      profile: My profile
+      manage_companies: Manage companies
+      account_settings: Account settings
+      use_as_system_operator: System Operator
+      system_operator: System Operator
+      sign_out: Sign out
+      virtual_lab: Labs
+      mark_all_read: Mark all read
+      gauges: My Gauges
+      nias: NIAS Analysis
+      purchase_orders: Purchase Orders
+    session:
+      virtual_lab: Labs
+  shared:
+    breadcrumbs:
+      go_back: Go back
+    application_nav:
+      virtual_labs: Labs
+      version: Version

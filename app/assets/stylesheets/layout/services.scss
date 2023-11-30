@@ -1,0 +1,17 @@
+////////////////////////
+// Services
+////////////////////////
+
+.nested-form-wrapper {
+  @media (max-width: $md-max) {
+    padding: 2rem 1.6rem;
+    border-radius: 0.4rem;
+    background-color: var(--light-grey--40);
+  }
+}
+.form-icon .icon:not(.icon--help){
+  stroke-width: 0.1rem !important;
+  position: absolute !important;
+  left: 85% !important;
+  bottom: 15%;
+}

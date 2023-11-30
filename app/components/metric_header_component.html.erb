@@ -1,0 +1,26 @@
+<div class="metric-header-container"  >
+  <div class="l-grid-container">
+    <div class="l-grid">
+      <%@metrics.data
+          .reject { |key| ["monthly_#{@metrics.company.role}_stats", 'units', 'places', 'abbreviations', 'style_logics'].include?(key) }
+          .sort_by{|key, value| (@metrics.places[key] ||  @metrics.places.length + 1) if !@metrics.places.empty? }
+          .each do |stat_key, stat_value| %>
+        <div class= "l-grid-span--2" data-controller="metric"
+             data-metric-popup-value="<%={stat_key => @metrics["monthly_#{@metrics.company.role}_stats"]
+               .map{|k, v| {k => v.map{|key, value| if key == stat_key  then value  end}.compact[0]}.to_h},
+                                          total_value: stat_value,
+                                          search_id: @search_id,
+                                          unit: @metrics.units[stat_key] ||t('metric_component.metric_unit')}.to_json %>">
+          <div class="popup" >
+            <div class="popuptext" id="<%=@search_id %>-<%=stat_key  %>">
+              <canvas data-metric-target="popup" class="stat-canvas" id="myChart-<%= stat_key %>-<%= @search_id %>"></canvas>
+            </div>
+          </div>
+          <%= render(MetricHeaderTextComponent.new(metrics: @metrics,stat_value: stat_value, stat_key: stat_key, search_id: @search_id )) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,32 @@
+////////////////////////
+// Empty Fields
+////////////////////////
+
+.empty-field, .readonly-text {
+    display: block;
+    padding: 2rem 1.6rem;
+    border-radius: 0.4rem;
+    background-color: var(--light-grey--40);
+    color: var(--grey--80);
+    font-style: italic;
+    text-align: center;
+
+    .nested-form-wrapper:not([style]) ~ & {
+        display: none;
+      }
+
+      .field--container[style*="display:none;"] ~ & {
+        display: none;
+      }
+}
+
+.readonly-text {
+  font-style: normal;
+  text-align: left;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .trix-content {
+    padding: 1.5rem 0;
+  }
+}

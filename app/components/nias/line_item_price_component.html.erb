@@ -1,0 +1,31 @@
+<div class="nias-price-container">
+  <div class="l-grid">
+    <div class="l-grid-span--12">
+      <div class="nias-price">
+        € <%=@price %>
+      </div>
+    </div>
+    <div class="l-grid-span--12" >
+      <div class="l-grid">
+        <div class="l-grid-span--12">
+          <div class="d--flex f-jc-sb">
+            <div class="d--flex f-as-flex-start">
+              <% if Nias::PetRequestPolicy.new(Current.user, @request).can_accept_or_decline_files? %>
+                <span class="nias-files">
+                  <%= image_tag "#{results_status}.svg" %>
+                </span>
+              <% end %>
+            </div>
+            <div class="d--flex f-ai--center">
+              <%= t('nias.pet_requests.show.results') %>
+              <span class="card__toggle d--flex nias-files u-ml2">
+                <%= render(IconComponent.new(name: 'chevron-down', bold: true, classes: 'plus')) %>
+                <%= render(IconComponent.new(name: 'chevron-up', bold: true, classes: 'minus')) %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

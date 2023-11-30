@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="<%= locale -%>">
+  <%= render "shared/head" %>
+
+  <body class="session">
+    <%= render 'shared/google_tag_manager_no_script' %>
+    <div class="l-grid">
+      <div class="l-grid-span--12 l-grid-span--10-md l-grid-start--2-md">
+        <div class="session__container <%= 'session__container--single' if params[:controller].include? "onboarding" %> l-container l-grid <%= content_for(:container_modifier) %>">
+          <% if params[:controller].include? "onboarding" %>
+            <div class="l-grid-span--12 l-grid-span--10-sm l-grid-start--2-sm">
+              <h1 class="<%= content_for?(:heading_style) ? yield(:heading_style) : "h4 u-mb2 t--center t--normal" %>"><%= content_for(:heading) -%></h1>
+              <%= content_for(:gauge) -%>
+              <h2 class="t--center"><%= content_for(:subheading) -%></h2>
+              <% if content_for(:instructions) %>
+                <p class="subhead t--center u-mt0"><%= content_for(:instructions) -%></p>
+              <% end %>
+            </div>
+            <div class="<%= content_for(:content_grid_settings) %>">
+              <div class="l-grid-span--12">
+                <%= render('shared/flashes') %>
+              </div>
+              <%= yield -%>
+            </div>
+          <% else %>
+            <div class="session__form">
+              <h1 class="h2"><%= content_for(:heading) -%></h1>
+              <p class="subhead"><%= content_for(:subheading) -%></p>
+              <%= render('shared/flashes') %>
+              <%= yield -%>
+            </div>
+            <div class="session__title-card">
+              <div class="session__logo">
+                <%= image_tag('vl_reverse_color.png') %>
+              </div>
+              <p class="subtitle"><%= t('devise.registrations.new.register_message') %></p>
+              <% if defined?(resource_name) %>
+                <% if controller_name != 'sessions' && controller_name != 'passwords' %>
+                  <p class="session__prompt">
+                    <%= t('.already_have_an_account') %>
+                    <%= link_to t("devise.shared.links.sign_in"), new_session_path(resource_name), class:"reverse d--block u-mt3 u-mb0", style:"font-size: 2.8rem;" %>
+                  </p>
+                <% end -%>
+                <%- if devise_mapping.registerable? && controller_name != 'registrations' && controller_name != 'confirmations' %>
+                  <p class="session__prompt">
+                    <%= link_to  "#{t('.dont_have_an_account')} #{t("devise.shared.links.sign_up")}", new_users_onboarding_path, class:"button button--transparent u-mla u-mr2" %>
+                  </p>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="l-grid-span--12 l-grid-span--10-md l-grid-start--2-md">
+        <div class="session__footer">
+          <% if defined?(resource_name) %>
+            <% if controller_name != 'sessions' && controller_name != 'passwords' %>
+              <p class="session__prompt">
+                <%= t('.already_have_an_account') %>
+                <%= link_to t("devise.shared.links.sign_in"), new_session_path(resource_name), class:"reverse d--block u-mt3 u-mb0", style:"font-size: 2.8rem;" %>
+              </p>
+            <% end -%>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' && controller_name != 'confirmations' %>
+              <p class="session__prompt">
+                <%= link_to "#{t('.dont_have_an_account')} #{t("devise.shared.links.sign_up")}", new_users_onboarding_path, class:"button button--transparent" %>
+              </p>
+            <% end %>
+          <% end %>
+          <span>&copy; <%= t('.virtual_lab') -%> <%= Date.current.year -%></span>
+          <%= link_to(t('devise.shared.terms_and_conditions'), page_path('terms_and_conditions'), target: :_blank, class: 'footer') %>
+          <%= link_to(t('devise.shared.privacy_policy'), page_path('privacy_policy'), target: :_blank, class: 'footer') %>
+        </div>
+      </div>
+    </div>
+
+    <%= render "svg/clip-paths" %>
+  </body>
+</html>

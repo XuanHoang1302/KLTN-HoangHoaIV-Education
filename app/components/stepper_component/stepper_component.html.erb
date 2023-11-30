@@ -1,0 +1,33 @@
+<div class="<%= classes %>">
+  <ol>
+    <% @stepper.display_step_names.each_with_index do |step_name, index| %>
+      <% content_for(:step_content, flush: true) do %>
+        <%= show_svg("arrow_start#{'--first' if index == 0}.svg") %>
+        <div class="stepper__text">
+          <%= show_svg('arrow_center.svg') %>
+          <span><%= @stepper.header(for_step: step_name) %></span>
+          <% if @show_subheaders %>
+            <span class="subhead">
+              <%= @stepper.subhead(for_step: step_name) %>
+            </span>
+          <% end %>
+        </div>
+        <%= show_svg('arrow_end.svg') %>
+      <% end %>
+
+      <li class="<%= 'current ' if @stepper.current_step.name == step_name %>
+                 <%= 'complete ' if @stepper.step_complete?(step_name) %>
+                 <%= 'green' if @stepper.complete? %>">
+
+        <% if linkable?(step_name) %>
+          <%= link_to step_path(step_name) do %>
+            <%= content_for(:step_content) %>
+          <% end  %>
+        <% else %>
+          <%= content_for(:step_content) %>
+        <% end %>
+
+      </li>
+    <% end %>
+  </ol>
+</div>

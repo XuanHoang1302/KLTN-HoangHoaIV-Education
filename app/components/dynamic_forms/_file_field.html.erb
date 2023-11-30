@@ -1,0 +1,26 @@
+<%= form.fields_for name do |file_section| %>
+  <div data-controller="file-input file-drop"
+       data-file-drop-target="container"
+       data-file-drop-selector=".field"
+       <% if readonly && files.nil? %>style="margin-top: -1.2rem"<% end %>>
+
+    <%= render partial: '/dynamic_forms/file',
+               collection: files,
+               locals: { form_section: file_section, readonly: readonly } %>
+
+    <% if readonly && files.nil? %>
+      <p class="tag--bordered d--inline-block u-mb6"><%= t("form.file_field.no_files_attached") %></p>
+    <% end %>
+
+    <% unless readonly %>
+      <%= file_section.hidden_field :type, value: :files %>
+      <%= file_section.file_field :signed_ids, multiple: true, label: label %>
+
+      <div class="visually-hidden" data-file-input-target="listContainer">
+        <div class="file-input__file-list" data-file-input-target="list">
+          <ul></ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

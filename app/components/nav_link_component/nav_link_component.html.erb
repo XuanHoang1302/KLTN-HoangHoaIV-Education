@@ -1,0 +1,4 @@
+<%= link_to @href, class: class_names('selected': helpers.active_link?(@href, strategy: @active_strategy)) do %>
+  <%= render IconComponent.new(name: @icon) %>
+  <%= @title %>
+<% end %>

@@ -1,0 +1,6 @@
+<%= render partial: "/marketplace_line_item_component/#{@project.project_type}", locals: { line_items: @project.marketplace_line_items } %>
+
+<%= link_to project_xlsx_path(@project.oid, format: 'xlsx'), class: 'button button--mini d--inline-flex button--ghost-mix u-mra', target: :_top, data: { action: 'click->export-excel#submit'} do %>
+  <%= render(IconComponent.new(name: 'download', bold: true, classes: 'u-mr2')) %>
+  <%= t('common.export_excel') %>
+<% end %>

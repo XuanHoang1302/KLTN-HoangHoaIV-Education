@@ -1,0 +1,30 @@
+//
+// Toss on an element to indicate unfinished/placeholder
+// NOTE AB: Please move/fix/refactor as desired.
+//
+.placeholder {
+  font-family: 'Courier New', monospace;
+  border: 1px dashed;
+  padding: 0 5px;
+  position: relative;
+  font-weight: bold;
+  background: white;
+  border-radius: 2px;
+  &:hover {
+    &:before {
+      border-radius: 2px;
+      position: absolute;
+      content: 'Placeholder';
+      top: -15px;
+      left: -5px;
+      background: var(--white);
+      padding: 2px 5px;
+      background: black;
+      color: white;
+      font-variant: all-small-caps;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  }
+}
+

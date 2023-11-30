@@ -1,0 +1,7 @@
+<div class="notification notification--changes-requested">
+  <h2 class="h4 u-mb0"><span><%= render IconComponent.new(name: :alert_circle) %></span> <span><%= t('.changes_requested') %></span></h2>
+  <div class="notification__message">
+    <p class="u-mb2"><%= sysop_change_request.message %></p>
+    <p class="t--light-grey--120"><%= local_time(sysop_change_request.created_at) %></p>
+  </div>
+</div>

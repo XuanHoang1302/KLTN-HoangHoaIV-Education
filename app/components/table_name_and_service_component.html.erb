@@ -1,0 +1,30 @@
+<% if @name %>
+  <% number = rand(0.0..50.0) %>
+  <div class="table-name" data-controller="table-name" data-table-name-name-value="<%= {name: @name, number: number}.to_json %>" >
+    <div class="table-popup">
+      <span class="table-popup-text" id="myPopup<%=@name.is_a?(Array) ? @name.first : @name%>-<%=number%>"><%=@name.is_a?(Array) ? @name.join(' ') : @name %></span>
+    </div>
+    <div class="item table-element-wrap" data-action='mouseover->table-name#tableNameMouseOver mouseout->table-name#tableNameMouseOut'>
+      <% if @link && !@link.empty?%>
+        <%= link_to @link[:url].to_s, data: @link[:data] ? @link[:data] : {} do %>
+          <%=@type == 'name' ? @name.to_s.split('(')[0][0..(@length -1)] :  @name.to_s.split('/')[0][0..(@length -1)]%><%= '...' if @name.to_s.length > @length  %>
+        <% end %>
+      <% elsif @name.is_a?(Array) %>
+        <% if !@name.compact.empty? %>
+          <%= @name.first.to_s[0..(@length -1)] %><%= '...' if @name.first.to_s.length > @length  %>
+        <% end %>
+      <%else  %>
+        <% case @type %>
+        <% when 'name' %>
+         <%= @name.to_s.empty? ? @name : @name.to_s.split('(')[0][0..(@length -1)] %>
+        <% when 'service' %>
+          <%= @name[0..(@length -1)] %>
+        <% else %>
+          <%= @name.to_s.empty? ? @name : @name.to_s.split('/')[0][0..(@length -1)]  %>
+        <% end %>
+        <%= '...' if @name.to_s.length > @length  %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

@@ -1,0 +1,159 @@
+////////////////////////
+// Application-Wide Variables
+////////////////////////
+
+:root {
+
+// Typography
+
+//// Typeface
+--font-display: 'Noto Sans', 'Helvetica', sans-serif;
+--font-copy: 'Open Sans', 'Helvetica', sans-serif;
+
+// Colors
+
+//// Primary
+--trigo-green: #a8c855;
+--dark-grey: #3f4756;
+
+--dark-grey--140: #323945;
+--dark-grey--40: #B2B5BB;
+
+//// Secondary
+--trigo-blue: #004983;
+--sky-blue: #51b8e9;
+--tangerine: #fcb414;
+--cherry: #EF4740;
+--avocado: #05944F;
+
+//// Neutrals
+--white: #ffffff;
+--light-blue: #e0eef4;
+--light-grey: #e6e7e8;
+--medium-grey: #999999;
+
+//// Tints & Shades
+
+--light-grey--160: #727781;
+--light-grey--140: #8E929A;
+--light-grey--120: #AAADB3;
+--light-grey: #C7C9CD;
+--light-grey--80: #E3E4E6;
+--light-grey--40: #F1F1F2;
+--light-grey--20: #FAFAFA;
+--light-grey--5: #F8F8F9;
+
+--text: #3D3C3C;
+--text--80: #646363;
+--text--60: #8B8A8A;
+--text--40: #B1B1B1;
+--text--20: #D8D8D8;
+--text--10: #ECEBEB;
+--text--5: #F5F5F5;
+
+--primary-green: var(--trigo-green);
+--primary-green--160: #435022;
+--primary-green--140: #657833;
+--primary-green--120: #86A044;
+--primary-green--80: #B9D377;
+--primary-green--40: #DCE9BB;
+--primary-green--20: #EEF4DD;
+
+--grey: var(--dark-grey);
+--grey--160: #191C22;
+--grey--140: #323945;
+--grey--120: #373F4D;
+--grey--80: #656C78;
+--grey--40: #B2B5BB;
+--grey--20: #D9DADD;
+
+--dark-blue: var(--dark-blue);
+--dark-blue--160: #1F3C53;
+--dark-blue--140: #144063;
+--dark-blue--120: #0A4573;
+--dark-blue--80: #336D9C;
+--dark-blue--40: #99B6CD;
+--dark-blue--20: #CCDBE6;
+
+--sky-blue--160: #3F687C;
+--sky-blue--140: #4583A0;
+--sky-blue--120: #4B9DC5;
+--sky-blue--100: #53BAEA;
+--sky-blue--80: #74C6ED;
+--sky-blue--40: #B9E3F6;
+--sky-blue--20: #DCF1FB;
+
+--yellow: var(--tangerine);
+--yellow--160: #836727;
+--yellow--140: #AC8020;
+--yellow--120: #D49A1A;
+--yellow--80: #FDC343;
+--yellow--40: #FEE1A1;
+--yellow--20: #FEF0D0;
+
+--red: var(--cherry);
+--red--160: #601C1A;
+--red--140: #8F2B26;
+--red--120: #BF3933;
+--red--100: #EB5757;
+--red--80: #F26C66;
+--red--40: #F9B5B3;
+--red--20: #FCDAD9;
+--red--10: #FDECEC;
+
+--violet: #aa8ed6;
+
+--dark-green: var(--avocado);
+--dark-green--160: #10462D;
+--dark-green--140: #03582F;
+--dark-green--120: #03703C;
+--dark-green--80: #06C167;
+--dark-green--40: #C0ECD7;
+--dark-green--20: #E2F3EC;
+--dark-green--10: #F0F9F5;
+
+--orange: #E17B1D;
+
+//// Contextual Colors
+--bg--primary: var(--white);
+--bg--secondary: var(--light-grey--40);
+--bg--tertiary: var(--light-grey--80);
+
+--content--primary: var(--grey--160);
+--content--secondary: var(--grey--140);
+--content--tertiary: var(--grey--120);
+
+--borders--default: var(--grey--20);
+--borders--focused: var(--grey);
+--borders--selected: var(--grey--160);
+
+// Spacing/Borders
+
+--margin-xs: 2rem;
+--margin-sm: 3rem;
+--margin-md: 3.6rem;
+--margin-lg: 4rem;
+--margin-xl: 6rem;
+
+--padding-sm: 1.2rem;
+--padding-md: 2.4rem;
+--padding-lg: 3rem;
+--padding-xl: 3.6rem;
+
+--shadow--low: 0px 4px 16px -1px rgba(63, 71, 86, 0.12);
+--shadow--high: 0px 8px 32px -4px rgba(63, 71, 86, 0.1);
+--shadow--high--hover: 0px 8px 32px -4px rgba(63, 71, 86, 0.2);
+--shadow--subtle: 0px 2px 16px rgba(63, 71, 86, 0.06); // Always paired with --border--subtle
+--shadow--subtle--base: 0px 7px 10px -4px rgba(63, 71, 86, 0.1);
+--shadow--modal: 30px 30px 60px rgba(0, 0, 0, 0.25); // As seen on login/onboarding pages
+--shadow--table: 0px 4px 10px rgba(25, 28, 34, 0.04);
+--shadow--secondary-container: 0px 6px 18px rgba(0, 0, 0, 0.06);
+
+--shadow--focus: 0 0 0 0.2rem var(--sky-blue--120);
+
+--border--subtle: 1px solid var(--light-grey--20);
+
+//// Contextual
+  --subhead-top-margin: -1.2rem;
+  --subhead-bottom-margin: var(--margin-lg);
+}

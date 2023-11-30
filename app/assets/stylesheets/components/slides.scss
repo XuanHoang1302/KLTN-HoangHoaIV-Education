@@ -1,0 +1,58 @@
+////////////////////////
+// Slide Styles
+////////////////////////
+
+.glider__container {
+  width: 100%;
+  margin: 0 auto 6rem;
+}
+
+.glide--slider {
+  border-radius: 1rem;
+  box-shadow: var(--shadow--high);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.glide__track {
+  margin-bottom: 0;
+}
+
+.glide__slides {
+  padding: 3.6rem 0 3.2rem !important;
+}
+
+.glide__slide {
+  padding: 0 6rem;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+.glide__bullets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3.6rem;
+
+  .glide__bullet {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    margin-bottom: 0;
+    background-color: var(--white);
+    border: 0.2rem solid var(--grey);
+    transition: background-color 0.1s ease-out;
+
+    &:not(:last-child) {
+      margin-right: 0.8rem;
+    }
+
+    &--active {
+      background-color: var(--grey);
+      border: 0.2rem solid var(--grey);
+      transition: background-color 0.1s ease-out;
+    }
+  }
+}

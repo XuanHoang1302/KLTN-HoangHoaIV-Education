@@ -1,0 +1,172 @@
+////////////////////////
+// User Tile Styles
+////////////////////////
+// (With extension for companies)
+
+.user, .company {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+
+  .user__thumbnail, .company__thumbnail {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    margin-right: -1rem;
+    border-radius: 2.8rem;
+    background-color: initial;
+    color: initial;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    line-height: 2.7rem;
+    border: 0.2rem solid var(--white);
+    
+    background-color: var(--light-grey--80);
+    color: var(--grey--80);
+  }
+  .user__name, .company__name {
+    display: inline-block;
+    overflow: hidden;
+    width: 0;
+  }
+
+  .company__thumbnail {
+    width: 3.6rem;
+    height: 3.6rem;
+    font-size: 2rem;
+    line-height: 3.4rem !important;
+  }
+
+  .company__name {
+    line-height: 1.8rem;
+  }
+}
+
+// Adaptations for Linked Names
+
+a > .user,
+a > .company,
+button > .company {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  grid-gap: 0.8rem;
+  grid-template-columns: 3rem 1fr;
+
+  .user__name, .company__thumbnail {
+    line-height: 2.8rem;
+    border-color: transparent;
+  }
+
+  .user__name, .company__name {
+    width: 100%;
+  }
+}
+
+a > .company,
+button > .company {
+  grid-template-columns: 3.6rem 1fr;
+}
+
+a:hover, a:focus {
+  .user__thumbnail, .company__thumbnail {
+    text-decoration: none;
+    text-decoration-color: transparent;
+  }
+  .user__name, .company__name {
+    text-decoration: none;
+    text-decoration-color: transparent;
+  }
+}
+
+// Adaptations for Table Usage
+
+td > .user:after {
+  display: none;
+}
+
+td > .user:only-child {
+  .user__thumbnail {
+    margin-right: 0.4rem;
+  }
+  .user__name {
+    width: auto;
+  }
+}
+
+// Make them colorful, wooooo—
+
+[data-user-name^="A"], [data-user-name^="G"], [data-user-name^="M"], [data-user-name^="S"], [data-user-name^="Y"] {
+  > .user__thumbnail, > .header-nav__user-icon {
+    background-color: var(--dark-blue--40);
+    color: var(--dark-blue--160);
+  }
+}
+[data-user-name^="B"], [data-user-name^="H"], [data-user-name^="N"], [data-user-name^="T"], [data-user-name^="Z"] {
+  > .user__thumbnail, > .header-nav__user-icon {
+    background-color: var(--primary-green--40);
+    color: var(--primary-green--160);
+  }
+}
+[data-user-name^="C"], [data-user-name^="I"], [data-user-name^="O"], [data-user-name^="U"] {
+  > .user__thumbnail, > .header-nav__user-icon {
+    background-color: var(--yellow--40);
+    color: var(--yellow--160);
+  }
+}
+[data-user-name^="D"], [data-user-name^="J"], [data-user-name^="P"], [data-user-name^="V"] {
+  > .user__thumbnail, > .header-nav__user-icon {
+    background-color: var(--dark-green--40);
+    color: var(--dark-green--160);
+  }
+}
+[data-user-name^="E"], [data-user-name^="K"], [data-user-name^="Q"], [data-user-name^="W"] {
+  > .user__thumbnail, > .header-nav__user-icon {
+    background-color: var(--red--40);
+    color: var(--red--160);
+  }
+}
+[data-user-name^="F"], [data-user-name^="L"], [data-user-name^="R"], [data-user-name^="X"] {
+  > .user__thumbnail, > .header-nav__user-icon {
+    background-color: var(--sky-blue --40);
+    color: var(--sky-blue--160);
+  }
+}
+
+[data-company-name^="A"], [data-company-name^="G"], [data-company-name^="M"], [data-company-name^="S"], [data-company-name^="Y"] {
+  > .company__thumbnail {
+    background-color: var(--dark-blue--40);
+    color: var(--dark-blue--160);
+  }
+}
+[data-company-name^="B"], [data-company-name^="H"], [data-company-name^="N"], [data-company-name^="T"], [data-company-name^="Z"] {
+  > .company__thumbnail {
+    background-color: var(--primary-green--40);
+    color: var(--primary-green--160);
+  }
+}
+[data-company-name^="C"], [data-company-name^="I"], [data-company-name^="O"], [data-company-name^="U"] {
+  > .company__thumbnail {
+    background-color: var(--yellow--40);
+    color: var(--yellow--160);
+  }
+}
+[data-company-name^="D"], [data-company-name^="J"], [data-company-name^="P"], [data-company-name^="V"] {
+  > .company__thumbnail {
+    background-color: var(--dark-green--40);
+    color: var(--dark-green--160);
+  }
+}
+[data-company-name^="E"], [data-company-name^="K"], [data-company-name^="Q"], [data-company-name^="W"] {
+  > .company__thumbnail {
+    background-color: var(--red--40);
+    color: var(--red--160);
+  }
+}
+[data-company-name^="F"], [data-company-name^="L"], [data-company-name^="R"], [data-company-name^="X"] {
+  > .company__thumbnail {
+    background-color: var(--sky-blue --40);
+    color: var(--sky-blue--160);
+  }
+}

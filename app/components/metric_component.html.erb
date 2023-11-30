@@ -1,0 +1,39 @@
+<h3 class="label--group"><%= t(".title") %></h3>
+<table class='table--service-match' >
+  <%@metrics.data
+      .reject { |key| ["monthly_#{@metrics.company.role}_stats", 'units', 'places', 'abbreviations', 'style_logics'].include?(key) }
+      .sort_by{|key, value| (@metrics.places[key] ||  @metrics.places.length + 1) if !@metrics.places.empty? }
+      .each do |stat_key, stat_value| %>
+    <% if !["monthly_#{@metrics.company.role}_stats", 'units', 'places', 'style_logics'].include?(stat_key) %>
+      <tr data-controller='metric'
+          data-metric-accordion-value="<%={
+                                            stat_key => @metrics["monthly_#{@metrics.company.role}_stats"]
+                                              .map{|k, v| {k => v.map{|key, value| if key == stat_key  then value  end}
+                                                .compact[0]}.to_h},
+                                            total_value: stat_value,
+                                            search_id: @search_id,
+                                            unit: @metrics.units[stat_key] || t('.metric_unit')
+                                          }.to_json %>">
+        <td class="metric-table-text" data-action='click->metric#getDataFromCompanyMetrics' >
+          <%= stat_key.titleize %>
+          <div id="canvas-container_<%= @search_id %>_<%=stat_key%>" class="hidden" data-metric-target="accordion_container">
+            <div id="canvas-place_<%=@search_id%>_<%=stat_key%>" class="canvas" data-metric-target="accordion_canvas"></div>
+          </div>
+        </td>
+        <td class="metrics-table-values <%= @metrics.style_logics[stat_key]
+                                              .select{|key, value| stat_value.between?(value[0], value[1])}
+                                              .keys
+                                              .join if @metrics.style_logics[stat_key] %> ">
+          <% if stat_value.is_a?(Float)%>
+            <%=stat_value.round(2)%><%=@metrics.units[stat_key] || t('.metric_unit')%>
+          <% else %>
+            <%=if stat_value / 1000000 >= 1 then "#{ (stat_value / 1000000.0).round(2) }m"
+               elsif stat_value/1000 >= 1 then "#{ (stat_value/1000.0).round(2) }k"
+               else stat_value end%><%=@metrics.units[stat_key] || t('.metric_unit') %>
+          <% end %>
+        </td>
+      </tr>
+    <%end %>
+  <% end %>
+</table>
+

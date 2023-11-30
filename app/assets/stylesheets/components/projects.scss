@@ -1,0 +1,23 @@
+.project-container {
+  .checkbox-container{
+    display: flex;
+    position: relative;
+    .checkbox {
+      display: flex;
+      font-size: 1.2rem;
+      .checkbox__input {
+        position: absolute;
+        top: 4rem;
+      }
+      .checkbox__label{
+        display: block;
+        font-family: var(--font-display);
+        margin-bottom: 0.6rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        font-weight: 500;
+        color: var(--grey--160);
+      }
+    }
+  }
+}

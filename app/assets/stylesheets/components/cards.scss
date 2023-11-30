@@ -1,0 +1,359 @@
+.card {
+
+  // Direct Search Results Card
+  display: block;
+  padding: 0 1.6rem;
+  margin-bottom: 2.4rem;
+  border: 0.2rem solid var(--grey--20);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow--secondary-container);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.selected {
+    border-color: var(--grey--140);
+    background-color: var(--light-grey);
+  }
+
+  &.selected-light-grey {
+    border-color: var(--light-grey--120);
+    background-color: var(--light-grey--40);
+  }
+
+  &.selected-border {
+    border-color: var(--grey--140);
+  }
+
+  &.small-margin {
+    margin: 0.4rem;
+    padding: 1.2rem;
+  }
+
+  &__title {
+    display: flex;
+    margin-top: 1.2rem;
+    margin-bottom: 0;
+    color: var(--grey--140);
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    font-weight: bold;
+  }
+
+  &__vendor {
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    color: var(--grey--80);
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  &__ratings {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 1.6rem 0 1.2rem 2.4rem;
+
+    div:not(:last-child) {
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  &__description {
+    margin: 1.2rem 0;
+    font-size: 1.2rem;
+    line-height: 20px;
+  }
+
+  &__specs {
+    display: flex;
+    padding: 1.2rem 0;
+    flex-direction: column;
+    height: 100%;
+
+    p, h2 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    strong {
+      margin-right: 0.8rem;
+    }
+    svg {
+      margin-right: 0.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      stroke-width: 0.2rem;
+    }
+  }
+
+  &__specs__project {
+    display: flex;
+    padding: 1.2rem 0;
+    flex-direction: column;
+    height: 100%;
+
+    p, h2 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    strong {
+      margin-right: 0.8rem;
+    }
+    svg {
+      margin-right: 0.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      stroke-width: 0.2rem;
+    }
+  }
+
+  &__actions, &__delete {
+    display: flex;
+    padding: 1.2rem 0;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    a {
+      justify-content: center !important;
+
+      svg { margin-right: 0.8rem; }
+    }
+
+    &--h {
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__delete {
+    justify-content: flex-start;
+    padding-top: 0;
+    text-align: right;
+  }
+
+  &__bookmark {
+
+  }
+
+
+  // Under Construction Card
+
+  &--under-construction {
+    padding: 3.2rem;
+    border-radius: 1rem;
+    background-color: var(--yellow--120);
+    color: var(--white);
+    text-align: center;
+
+    .icon-ornament {
+      width: 10rem;
+      margin: 0 auto -1rem;
+    }
+  }
+}
+
+.card--summary {
+  padding: 0;
+
+  summary {
+    list-style: none;
+    padding: 0 1.6rem;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details {
+    > h3, > table, > p {
+      margin-left: 1.6rem;
+      margin-right: 1.6rem;
+    }
+  }
+
+  table {
+    width: calc(100% - 3.2rem);
+  }
+
+  .card__box {
+    padding: 1.6rem;
+    border-radius: 0.4rem;
+    border: 0.1rem solid var(--light-grey--40);
+  }
+
+  h3 {
+    margin-top: 3.2rem;
+    margin-bottom: 1.6rem;
+
+    hr + h3 {
+      margin-top: 1.6rem;
+    }
+  }
+
+
+}
+
+.card__toggle, .search-filters__toggle {
+  display: inline-block;
+
+  svg {
+    width: 1.6rem;
+    margin-right: 0.8rem;
+  }
+
+  details & {
+    .plus {
+      display: block;
+    }
+    .minus {
+      display: none;
+    }
+  }
+  details[open] & {
+    .plus {
+      display: none;
+    }
+    .minus {
+      display: block;
+    }
+  }
+}
+
+.tab-4__bb {
+  word-break: keep-all;
+  list-style-type: none;
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+
+.lineitem-table {
+  >ul, details>summary>ul {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    &.lineitem-header {
+      background-color: #f6f9fa;
+      border-bottom: 1px solid grey;
+    }
+
+    >li {
+      word-break: keep-all;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0;
+      list-style-type: none;
+      font-size: 1.6rem;
+      padding: 1rem;
+    }
+    >li:not(:first-child) {
+      border-left: 1px solid #ebe5e5;
+    }
+  }
+
+  details {
+    border-bottom: 1px solid grey;
+  }
+
+  details > ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 2rem 0 2rem;
+    margin: 0;
+    border-top: 1px solid #ebe5e5;
+
+    > li {
+      list-style-type: none;
+      width: 50%;
+      display: flex;
+      flex-wrap: nowrap;
+      font-size: 1.6rem;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ebe5e5;
+
+      > strong {
+        width: 50%;
+      }
+    }
+  }
+}
+
+
+.search-filters__toggle {
+  position: relative;
+  margin-top: 0.4rem;
+}
+
+.search-filters__toggle svg {
+  position: relative;
+  margin-top: 0.4rem;
+  top: 0.4rem;
+  left: 0.7rem;
+}
+
+// Adding a flat container version of the card
+
+.card--flat {
+  border: 1px solid var(--light-grey--40);
+  box-shadow: none;
+  //overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+
+  summary {
+    background-color: var(--light-grey--40);
+    list-style: none;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .card__content {
+    margin-bottom: 0 !important;
+  }
+
+  h2 {
+    margin-top: 0;
+    padding: 1.2rem 0;
+  }
+
+  ul {
+    border-radius: 0.4rem;
+    background-color: var(--light-grey--40);
+    padding: 1.6rem;
+    margin-bottom: 1.2rem;
+    list-style-type: none;
+  }
+
+  ul li {
+    margin-bottom: 0.4rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .trix-content {
+    margin: 0 0.4rem;
+  }
+}

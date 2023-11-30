@@ -1,0 +1,69 @@
+////////////////////////
+// Stylesheet Aggregate
+////////////////////////
+
+@import 'custom';
+@import 'actiontext';
+@import 'leaflet/dist/leaflet.css';
+@import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
+@import 'leaflet.markercluster/dist/MarkerCluster.css';
+@import 'slim-select/dist/slimselect.css';
+@import 'utilities/spacing';
+
+@import 'base/fonts';
+@import 'base/variables';
+@import 'base/normalize';
+@import 'base/grid';
+@import 'base/layout';
+@import 'base/globals';
+
+@import 'components/activity';
+@import 'components/address';
+@import 'components/breadcrumbs';
+@import 'components/cards';
+@import 'components/dev_notes';
+@import 'components/links';
+@import 'components/direct_uploads';
+@import 'components/doc_preview';
+@import 'components/empty_fields';
+@import 'components/excel_import';
+@import 'components/faqs';
+@import 'components/form';
+@import 'components/gauge';
+@import 'components/grid_table';
+@import 'components/guided_tours';
+@import 'components/loading';
+@import 'components/maps';
+@import 'components/messages';
+@import 'components/metric_header';
+@import 'components/metrics';
+@import 'components/modals';
+@import 'components/nav';
+@import 'components/nias_pet_request_show_element';
+@import 'components/nias';
+@import 'components/sidebar';
+@import 'components/notification';
+@import 'components/pagination';
+@import 'components/projects';
+@import 'components/tag';
+@import 'components/search_result_component';
+@import 'components/slides';
+@import 'components/steppers';
+@import 'components/steppers_circle';
+@import 'components/spaceship';
+@import 'components/suggestions';
+@import 'components/tabs';
+@import 'components/icons';
+@import 'components/tables';
+@import 'components/tooltips';
+@import 'components/users';
+@import 'components/toast';
+@import 'components/dashboard';
+@import 'components/placeholder';
+
+@import 'layout/services';
+@import 'layout/session';
+
+@import 'user_interface/kit';
+
+@import 'base/utilities';

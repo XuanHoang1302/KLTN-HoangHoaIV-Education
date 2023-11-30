@@ -1,0 +1,91 @@
+.banner {
+  box-sizing: border-box;
+  height: 280px;
+  border: 2px solid #D9DADD;
+  border-radius: 4px;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+}
+
+.projects-counter {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  .projects-number {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #A8C855;
+    padding-top: 20px;
+  }
+
+  .zero-projects {
+    color: #EF4740 !important;
+  }
+
+  .open-projects {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+  }
+}
+
+.webinar-text-container {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+}
+
+.see-all-link {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #0A4573;
+}
+
+.left-container {
+  display: flex;
+  align-items: center;
+}
+
+.left-container p {
+  margin-right: 10px;
+}
+
+.create-button {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+}
+
+.create-banner {
+  background: #FFFFFF;
+}
+
+.webinar-banner {
+  color: white !important;
+  border-radius: 4px;
+}

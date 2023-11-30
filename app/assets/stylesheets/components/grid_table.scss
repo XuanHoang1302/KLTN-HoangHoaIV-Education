@@ -1,0 +1,186 @@
+.table-component-container{
+  border-color: var(--grey--20) !important;
+  .button{
+    min-width: 6rem;
+    max-width: 6rem;
+    min-height: 3.5rem;
+    padding: 0;
+    margin: 0;
+    border-radius: 2rem;
+    font-size: 75%;
+  }
+  table {
+    text-align: left;
+    thead{
+      overflow:hidden;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+    tbody{
+      overflow:hidden;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+    thead td th{
+      min-width: 5rem;
+      max-width: 5rem;
+    }
+    thead td th:first-child{
+      min-width: 1rem;
+      max-width: 1rem;
+    }
+    tbody td td{
+      min-width: 5rem;
+      max-width: 5rem;
+    }
+    tbody td td:first-child{
+      min-width: 2rem;
+      max-width: 2rem;
+    }
+    thead tr th{
+      min-width: 5rem;
+      max-width: 5rem;
+    }
+    tbody tr td{
+      min-width: 5rem;
+      max-width: 5rem;
+      font-size: 1.3rem;
+    }
+  }
+  .tighter{
+    width: 6rem;
+    min-width: 6rem;
+  }
+  .wider{
+    width: 25rem;
+    min-width: 25rem;
+  }
+  table th > a, .table th > a {
+    right: 0.1rem;
+    bottom: 2.4rem;
+    position: absolute;
+  }
+  .button-cell{
+    max-width: 100% !important;
+  }
+  .t--right{
+    text-align: center !important;
+  }
+
+  .table-name{
+    display: flex;
+    flex-direction: row;
+  }
+  .tag--bordered{
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+  }
+}
+.search-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  label[for="search"]{
+    display: none;
+  }
+  .item{
+    min-width: 50%;
+  }
+}
+
+.pick-filter-container{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  .item{
+    margin-right: 2%;
+    width: 20rem;
+    select{
+      cursor: pointer;
+      border: 0.2rem solid var(--grey--20) !important;
+    }
+    select:active{
+      background: asset_url('help') no-repeat right;
+    }
+    select:hover{
+      border: 0.2rem solid var(--grey--40) !important;
+    }
+  }
+  label{
+    display: none;
+  }
+}
+.table-popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.table-popup .table-popup-text {
+  visibility: hidden;
+  min-width: 25rem;
+  min-height: 4.5rem;
+  background-color: lightgray;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 1rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+}
+
+/* Popup arrow */
+.table-popup .table-popup-text::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.table-popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+.table-name .item{
+  cursor: pointer;
+}
+
+.table-element-wrap{
+  overflow:hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

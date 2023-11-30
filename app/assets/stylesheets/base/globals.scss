@@ -1,0 +1,207 @@
+////////////////////////
+// Global Styles
+////////////////////////
+
+// Block Elements
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  background-color: var(--grey);
+  color: var(--grey--140);
+
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+p, .p {
+  font-size: 1.4rem;
+  color: var(--text-100);
+  line-height: 2.4rem;
+
+  &:empty {
+    display: none;
+  }
+
+  &.instructions {
+    color: var(--grey--80);
+    line-height: 2rem;
+  }
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+
+  &:empty {
+    display: none;
+  }
+}
+
+h1, .h1 {
+  --subhead-top-margin: -1.2rem;
+
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+h2, .h2 {
+  --subhead-top-margin: -1.2rem;
+
+  margin-top: 0.6rem;
+  margin-bottom: 1.4rem;
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+}
+
+.h2--alt { // Alternative h2 styling for subcontainers
+  --subhead-top-margin: 0;
+
+  margin-bottom: 0;
+  font-size: 1.8rem;
+  line-height: 3.6rem;
+  color: var(--grey--140);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h3, .h3 {
+  --subhead-top-margin: -1.2rem;
+
+  font-weight: 400;
+  font-size: 2.8rem;
+  line-height: 5rem;
+}
+
+h4, .h4 {
+  --subhead-top-margin: -1.2rem;
+
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3.6rem;
+}
+
+.h4--alt {
+  --subhead-top-margin: -1.2rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 3.6rem;
+  margin-bottom: 0.4rem;
+}
+
+// Subhead styling
+
+p.subhead {
+ color: var(--grey--80);
+ margin-top: var(--subhead-top-margin);
+ margin-bottom: var(--subhead-bottom-margin);
+
+  h1 ~ &, .h1 ~ & {
+    --subhead-top-margin: -2.4rem; }
+  h2 ~ &, .h2 ~ & {
+    --subhead-top-margin: -2.4rem; }
+  h3 ~ &, .h3 ~ & {
+    --subhead-top-margin: -2.4rem; }
+  h4 ~ &, .h4 ~ & {
+    --subhead-top-margin: -2.4rem; }
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+p, ul {
+  margin-top: 0;
+  margin-bottom: var(--padding-md);
+}
+
+ul > li:last-child {
+  margin-bottom: 0;
+}
+
+*:last-child { // We'll see how much this might wreck...
+  margin-bottom: 0;
+}
+
+// Semantic Block Elements
+
+caption {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 160%;
+}
+
+blockquote {
+  background-color: var(--light-grey--40);
+  border-left: 0.4rem solid var(--grey--40);
+  padding: 1.6rem;
+  margin: 0 0 2.4rem;
+}
+
+hr {
+  margin: 2.4rem 0;
+  border: none;
+  border-bottom: 1px solid var(--grey--20);
+}
+
+// List Elements
+
+.list--unstyled {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+// Trix
+
+.trix-content {
+  figcaption {
+    display: none;
+  }
+}
+
+trix-toolbar .trix-button-row {
+  flex-wrap: wrap;
+}
+
+trix-toolbar .trix-button-group:not(:last-child) {
+  margin-left: unset;
+  margin-right: 1.5vw;
+}
+
+trix-toolbar .trix-button-group:last-child {
+  margin-left: 0;
+}
+
+
+code {
+  display: block;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+.clear-link{
+  padding: 3% 0 4% 0.2%;
+}

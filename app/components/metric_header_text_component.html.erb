@@ -1,0 +1,17 @@
+<div class="metric-header-text <%= @metrics.style_logics[@stat_key]
+                                     .select{|key, value| @stat_value.between?(value[0], value[1])}
+                                     .keys
+                                     .join if @metrics.style_logics[@stat_key] %> " >
+  <div class="metric-key l-grid-span--6"  data-action ='mouseover->metric#metricMouseOver mouseout->metric#metricMouseOut' >
+    <%= @metrics.abbreviations[@stat_key] || t('metric_component.unknown_abr')%>:
+  </div>
+  <div class="metric-value l-grid-span--6">
+    <% if @stat_value.is_a?(Float)%>
+      <%=@stat_value.round(2)%><%=@metrics.units[@stat_key] || t('metric_component.metric_unit') %>
+    <% else %>
+      <%=if @stat_value / 1000000 >= 1 then "#{ (@stat_value / 1000000.0).round(2) }m"
+         elsif @stat_value/1000 >= 1 then "#{ (@stat_value/1000.0).round(2) }k"
+         else @stat_value end%><%=@metrics.units[@stat_key] || t('metric_component.metric_unit')%>
+    <% end %>
+  </div>
+</div>

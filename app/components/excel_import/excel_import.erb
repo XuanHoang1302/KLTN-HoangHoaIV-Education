@@ -1,0 +1,78 @@
+<button type="button"
+        class="button button--secondary button--left-icon u-mla u-mb0 d--inline-flex f-as-flex-end fl-r"
+        data-micromodal-trigger="bulk-import"
+        data-turbo="false">
+  <%= render(IconComponent.new(name: 'upload', bold: true)) %>
+  <%= @import_button_text %>
+</button>
+
+<div class="bulk-import-container"
+     data-controller="csvbox-import"
+     data-csvbox-import-sheet-id-value="<%= @sheet_id %>"
+     data-csvbox-import-prepare-import-path-value="<%= @prepare_import_path %>"
+     data-csvbox-import-import-path-value="<%= @import_path %>"
+     data-csvbox-import-user-id-value="<%= @user_id %>">
+  <div id="bulk_import_modal" class="t--center" >
+    <%= render ModalComponent.new(id: 'bulk-import', title: @import_dialog_title, show_actions: false) do |component| %>
+
+      <div class="l-grid-span--12 t--center u-mb12 u-pt5 u-pb5">
+        <%= @import_dialog_text %>
+      </div>
+
+      <div class="l-grid u-mb12">
+        <div class="l-grid-span--12 l-grid-span--1-xl d--block"></div>
+        <div class="l-grid-span--12 l-grid-span--6-lg l-grid-span--5-xl l-container border--box u-p8">
+          <div class="l-grid-span--12 u-mb8">
+            <span class="step-counter">1</span>
+          </div>
+          <div class="l-grid-span--12 u-mb8 card-title">
+            <h4 class="h4"><%= @import_download_template_title %></h4>
+          </div>
+          <div class="l-grid-span--12 u-mb8 card-body">
+            <%= @import_download_template_desc %>
+          </div>
+          <div class="l-grid-span--12">
+            <%= link_to xlsx_template_gauges_path(format: 'xlsx'), class: 'button button--primary button--left-icon u-mha u-mb4 u-mt4 ', target: :_top, data: { action: 'export-excel#submit'} do %>
+              <%= @download_template_button %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="l-grid-span--12 l-grid-span--6-lg l-grid-span--5-xl l-container border--box u-p8">
+          <div class="l-grid-span--12 u-mb8">
+            <span class="step-counter">2</span>
+          </div>
+          <div class="l-grid-span--12 u-mb8 card-title">
+            <h4><%= @import_upload_excel_title %></h4>
+          </div>
+          <div class="l-grid-span--12 u-mb8 card-body">
+            <%= @import_upload_excel_desc %>
+          </div>
+          <div class="l-grid-span--12">
+            <button type="button"
+                    class="button button--primary button--left-icon u-mha u-mb4 u-mt4 button--full-width"
+                    data-micromodal-close
+                    data-action="csvbox-import#openImportModal">
+              <%= @upload_excel_button %>
+            </button>
+          </div>
+        </div>
+        <div class="l-grid-span--12 l-grid-span--2-xl l-container visually-hidden"></div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div id="import_confirm_modal">
+    <%= render ModalComponent.new(id: 'import-confirm', show_actions: false, show_close: false)%>
+  </div>
+
+  <div id="import_result_modal">
+    <%= render ModalComponent.new(id: 'import-result', show_actions: false, show_close: false, data_options: {cancel_data: {action: "click->csvbox-import#closeResultModal"}})%>
+  </div>
+
+  <div id="import_error_modal">
+    <%= render ModalComponent.new(id: 'import-error', show_actions: false, show_close: false, data_options: {cancel_data: {action: "click->csvbox-import#closeResultModal"}})%>
+  </div>
+
+</div>

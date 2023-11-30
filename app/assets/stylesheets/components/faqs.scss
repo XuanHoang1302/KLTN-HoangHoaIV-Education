@@ -1,0 +1,147 @@
+////////////////////////
+// FAQs
+////////////////////////
+
+a[href].faq__category {
+    display: block;
+    padding: 1.6rem;
+    background-color: var(--light-grey--40);
+    border-radius: 0.4rem;
+
+    color: var(--grey);
+    text-decoration: none;
+
+    &:hover, &:focus {
+        text-decoration: none !important; 
+    }
+
+    h4 {
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    p {
+        font-weight: normal;
+    }
+}
+
+.faq__category-list {
+    padding-left: 0;
+    list-style-type: none;
+
+    li a[href] {
+        display: block;
+        margin-top: 0;
+        padding: 1.2rem 0;
+        color: var(--grey);
+        font-size: 1.6rem;
+        font-weight: normal;
+    }
+
+    li.active a[href] {
+        font-weight: bold;
+    }
+}
+
+.faq__question {
+    margin-bottom: 0.8rem;
+    background-color: var(--light-grey--40);
+    padding: 1.6rem;
+    border-radius: 0.4rem;
+
+    summary {
+        display: flex;
+        position: relative;
+        align-items: flex-start;
+        width: 100%;
+        
+        > div {
+            display: inline-flex;
+            width: calc(100% - 1.6rem);
+            align-items: flex-start;
+            margin-left: 1.6rem;
+            padding: 0.8rem 0;
+        
+
+            > a[href], > form, input[type="submit"] {
+                display: inline-block;
+                line-height: 1rem;
+                padding: 0;
+                border: none;
+            }
+
+            input[type="submit"] {
+                font-family: var(--font-display);
+                font-size: 1.4rem;
+                padding: 1px 0;
+                margin-top: -1px;
+                margin-left: 0.8rem;
+                font-weight: bold;
+                background-color: transparent;
+
+                &:hover, &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+
+    // Style the marker
+
+    summary {list-style: none}
+    summary::-webkit-details-marker {display: none; }
+
+    summary::before { 
+        position: absolute;
+        display: inline-block;
+        width: 1.6rem;
+        content:"▶"; 
+        color: var(--grey);
+        margin-top: 0.4rem;
+        /* you can style it however you want, use background-image for example */
+      }
+      
+      /* By using [open] we can define different styles when the disclosure widget is open */
+     &[open] summary::before { 
+        content:"▼"; 
+      }
+
+    
+
+    // Header text styling
+
+    &__header {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0.8rem;
+        line-height: 1rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    &__body {
+        padding-top: 1rem;
+        padding-left: 2.4rem;
+        .trix-content { 
+            margin-bottom: 1.2rem;
+            line-height: 2.4rem; 
+        }
+    }
+    
+}
+
+// Adaptations for Safari
+
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
+{ @media {
+    .faq__question__header {
+        margin-top: -0.9rem;
+        margin-left: 2rem;
+    }
+    
+    .faq__question summary div > a[href], .faq__question summary div > form, input[type="submit"] {
+        margin-top: -0.9rem;
+    }
+}}

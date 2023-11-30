@@ -1,0 +1,30 @@
+////////////////////////
+// Gauge
+////////////////////////
+
+.gauge {
+  margin-bottom: 3.2rem;
+  
+  .gauge__label {
+    margin-bottom: 0.8rem;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .gauge__base {
+    display: flex;
+    margin: 0 auto;
+    background-color: var(--text--10);
+    width: 10rem;
+    height: 1rem;
+    border-radius: .5rem;
+    overflow: hidden;
+  }
+
+  .gauge__complete {
+    height: 1rem;
+    width: 5rem;
+    align-self: flex-start;
+    background-color: var(--primary-green);
+  }
+}

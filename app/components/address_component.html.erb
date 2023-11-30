@@ -1,0 +1,21 @@
+<% if @name %>
+  <h2 class="h4 u-mb0">
+    <%= @name %>
+  </h2>
+<% end %>
+
+<div class="address" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+  <span class="street-address" itemprop="streetAddress">
+    <%= @address.address1 %>
+    <% if @address.address2 %>
+      <br><%= @address.address2 %>
+    <% end %>
+  </span>
+
+  <span class="locality" itemprop="addressLocality"><%= @address.city %></span>,
+  <span class="region" itemprop="addressRegion"><%= @address.province %></span>
+  <span class="postal-code" itemprop="postalCode"><%= @address.zip_code %></span>
+  <span class="country" itemprop="addressCountry"><%= @address.country %></span>
+
+  <%= content %>
+</div>

@@ -1,0 +1,17 @@
+<div class="lineitem-table">
+  <ul class="lineitem-table lineitem-header" >
+    <li> <%= Marketplace::LineItem::GenericItem.human_attribute_name(:category) %> </li>
+    <li> <%= Marketplace::LineItem::GenericItem.human_attribute_name(:subcategory) %> </li>
+    <li> <%= Marketplace::LineItem::GenericItem.human_attribute_name(:keywords) %> </li>
+    <li> <%= Marketplace::LineItem::GenericItem.human_attribute_name(:quantity) %> </li>
+  </ul>
+
+  <% line_items.each do |item| %>
+    <ul class="lineitem-table" >
+      <li> <%= item.subcategory&.category&.name || '---' %> </li>
+      <li> <%= item.subcategory&.name || '---' %> </li>
+      <li> <%= item.keywords&.join(', ') %> </li>
+      <li> <%= item.quantity || '---' %> </li>
+    </ul>
+  <% end %>
+</div>
