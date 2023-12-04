@@ -18,5 +18,17 @@ module HoangHoaIVEducation
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    def version
+      return 'dev' unless Rails.env.production?
+
+      release_version = Rails.root.join('app_version').read.strip
+      if ENV['HEROKU_APP_NAME']&.include? 'production'
+        release_version
+      elsif ENV['HEROKU_REVIEW_APP'] == 'true'
+        ENV.fetch('HEROKU_BRANCH', nil)
+      else
+        ENV['HEROKU_SLUG_COMMIT']&.first(8) || release_version
+      end
+    end
   end
 end

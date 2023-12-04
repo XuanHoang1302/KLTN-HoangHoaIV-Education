@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'notification_dropdown' do %>
+  <% if @notifications.present? %>
+    <%= render partial: "notifications/notification", collection: @notifications, cached: true %>
+  <% else %>
+    <%= t('common.no_notifications') %>
+  <% end %>
+<% end %>

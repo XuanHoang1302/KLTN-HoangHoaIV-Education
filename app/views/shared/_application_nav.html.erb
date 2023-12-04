@@ -6,31 +6,8 @@
       <% end %>
     </li>
 
-    <% if Current.context.system_operator? %>
-      <%= render "shared/application_nav/system_operator" %>
-    <% elsif Current.context.buyer?  %>
+    <% if Current.context.admin? %>
       <%= render "shared/application_nav/buyer" %>
-    <% elsif Current.context.integrator? %>
-      <%= render "shared/application_nav/integrator" %>
-  <% elsif Current.context.provider? %>
-      <%= render "shared/application_nav/provider" %>
-    <% elsif Current.context.preview? %>
-      <%= render "shared/application_nav/preview" %>
     <% end %>
-  </ul>
-
-  <ul class="sidebar__base">
-    <li data-guided-tour-id="help">
-      <%= render(NavLinkComponent.new(title: t('layouts.application.help'), href: help_path, icon: :"help-circle")) %>
-    </li>
-    <li>
-      <span class="u-ml3 fs-1"><%= t('.version') -%> <%= app_version %></span>
-    </li>
-    <li class="legal">
-      <span class="fs-1">&copy; <%= t('.virtual_labs') -%> <%= Date.current.year -%></span>
-      <%= link_to(t('devise.shared.terms_and_conditions'), page_path('terms_and_conditions'), target: :_blank, class: 'footer fs-1') %>
-      <%= link_to(t('devise.shared.privacy_policy'), page_path('privacy_policy'), target: :_blank, class: 'footer fs-1') %>
-      <%= link_to(t('devise.shared.provider_terms_and_conditions'), page_path('provider_terms_and_conditions'), target: :_blank, class: 'footer fs-1') %>
-    </li>
   </ul>
 </nav>

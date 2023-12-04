@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_095002) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_04_091851) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "ahoy_events", force: :cascade do |t|
@@ -59,21 +60,46 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_095002) do
   create_table "maintenance_job_runs", primary_key: "identifier", id: :string, force: :cascade do |t|
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "title"
+    t.string "given_name"
+    t.string "surname"
+    t.string "username"
+    t.string "phone_number"
+    t.string "role", default: "buyer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["given_name"], name: "index_users_on_given_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["surname"], name: "index_users_on_surname_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
 end

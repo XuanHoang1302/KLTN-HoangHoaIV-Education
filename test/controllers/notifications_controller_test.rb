@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class DashboardControllerTest < ActionDispatch::IntegrationTest
+class NotificationsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

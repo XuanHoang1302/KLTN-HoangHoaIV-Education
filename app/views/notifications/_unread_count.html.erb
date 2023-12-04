@@ -1,0 +1,7 @@
+<div id="unread_notifications">
+  <% if unread_count.positive? %>
+    <!-- If there are new messages, we want to show the message indicator along with the number of new messages, plus modify the help text above and accessibility text below to read "# new messages" -->
+    <span class="notification-button__indicator"><%= unread_count %></span>
+  <% end %>
+  <span class="visually-hidden"><%= unread_count.positive? ? t('common.unread_messages', count: unread_count) : t('common.no_new_messages') %></span>
+</div>

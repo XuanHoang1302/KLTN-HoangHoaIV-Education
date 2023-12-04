@@ -10,6 +10,91 @@
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>  </head>
 
   <body>
-    <%= yield %>
+  <%= render 'shared/google_tag_manager_no_script' %>
+
+  <div class="l-page" data-controller="sidebar">
+    <%= render "shared/application_nav" %>
+
+    <main class="l-main" data-sidebar-target="main">
+      <nav class="header-nav">
+
+        <%= render "shared/breadcrumbs" %>
+
+        <% notifications = Current.user.notifications.unread.order(created_at: :desc) %>
+        <% unread_count = notifications.count %>
+        <button data-guided-tour-id="notifications" class="header-nav__button header-nav__notification-button button--icon">
+          <%= render(IconComponent.new(name: 'bell')) %>
+          <%= turbo_stream_from [Current.user, :unread_notifications] %>
+          <%= render partial: "notifications/unread_count", locals: { unread_count: unread_count } %>
+
+          <div class="header-nav__notification-dropdown" >
+            <div class="d--flex f-jc-center f-ai--center <%= notifications.present? ? "" : "visually-hidden" %>">
+              <%= form_with class: "u-mt5" do |form| %>
+                <%= form.submit t('.mark_all_read'), formaction: mark_all_read_notifications_path, formmethod: :post, class: "button button--ghost" %>
+              <% end %>
+            </div>
+            <%= turbo_stream_from [Current.user, :notifications] %>
+            <ul id="notifications">
+              <%= turbo_frame_tag 'notification_dropdown', src: notifications_path, loading: :lazy do %>
+                <p>Loading...</p>
+              <% end %>
+            </ul>
+          </div>
+        </button>
+
+<!--        button user information-->
+
+        <div class="header-nav__user-button button--icon" data-user-name="<%= Current.user&.name -%>">
+          <div class="header-nav__user-name">
+            <p><strong><%= Current.user&.name -%></strong></p>
+          </div>
+
+          <span class="header-nav__user-icon">
+              <%= Current.user&.initials -%>
+            </span>
+
+          <div class="header-nav__user-dropdown">
+            <ul>
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <%= render IconComponent.new(name: 'user') %>
+                  <%= t('.profile') %>
+                <% end %>
+              </li>
+              <li>
+                <%= button_to destroy_user_session_path, method: :delete, class: 'sign-out-link', data: { turbo: false } do %>
+                  <%= render IconComponent.new(name: 'power') %>
+                  <%= t('.sign_out') %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="l-content l-grid l-grid--gapless">
+
+        <div class="l-heading l-grid-span--12 d--flex f-ai--center u-mt4 u-mb4 <%= 'l-grid-span--6-md' if content_for?(:heading_actions) %>">
+          <h1><%= content_for(:heading) -%></h1>
+          <% if content_for?(:subheading) -%><p class="u-mb8"><%= content_for(:subheading) -%></p><% end -%>
+        </div>
+        <% if content_for?(:heading_actions) -%>
+          <div class="l-content__actions l-grid-span--12 l-grid-span--6-md f-jc-fe"><%= content_for(:heading_actions) -%></div>
+        <% end -%>
+        <div id="flashes" class="l-grid-span--12"><%= render('shared/flashes') %></div>
+
+        <div class="l-grid-span--12">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <%= render "svg/clip-paths" %>
+  <%= content_for(:modals) %>
+
+  <%= turbo_frame_tag :server_triggered_modal %>
+  <toasts-container></toasts-container>
+
   </body>
 </html>

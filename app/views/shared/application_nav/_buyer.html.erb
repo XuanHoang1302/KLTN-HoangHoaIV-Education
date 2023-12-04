@@ -1,18 +1,4 @@
-<li data-guided-tour-id="company">
-  <%= render(NavLinkComponent.new(title: t('layouts.application.my_company'), href: applications_companies_path, icon: :home, active_strategy: :inclusive)) %>
-</li>
-
-<li data-guided-tour-id="calibrations_requests">
-  <%= render(NavLinkComponent.new(title: t('layouts.application.calibration'), href: calibrations_path, icon: 'point-scan', active_strategy: :inclusive)) %>
-</li>
-
 <li>
-  <%= render NavLinkComponent.new(title: t('layouts.application.gauge_management'), href: gauges_path, icon: 'inventory') %>
+  <%= render NavLinkComponent.new(title: t('layouts.application.gauge_management'), href: '#', icon: 'inventory') %>
 </li>
 
-<% nias_profile = Current.company.permissions.include?('Petcore Functional Barrier') %>
-<% if nias_profile %>
-<li data-guided-tour-id="nias_analysis">
-  <%= render(NavLinkComponent.new(title: t('layouts.application.nias_analysis'), href: nias_pet_requests_path, icon: 'file-text', active_strategy: :inclusive)) %>
-</li>
-<% end %>

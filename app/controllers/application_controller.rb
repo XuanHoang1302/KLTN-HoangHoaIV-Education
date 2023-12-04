@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   append_view_path "#{Rails.root}/app/components"
   helper_method :turbo_frame_request?
 
-  before_action :authenticate_user!
+  include Authentication
+  include SetCurrentRequestDetails
   include AutocompleteFields
+  include Breadcrumbs
 end

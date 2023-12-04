@@ -2,8 +2,10 @@
 
 require 'test_helper'
 
-class DashboardControllerTest < ActionDispatch::IntegrationTest
+class User
+  class ParameterSanitizerTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  end
 end

@@ -1,0 +1,9 @@
+<% begin %>
+  <%= link_to notification, data: { turbo_frame: "_top" } do %>
+    <li class="header-notification new">
+      <span><%= notification&.to_notification&.notification_message %></span>
+      <span class="header-notification__timestamp"><%= distance_of_time_in_words(notification.created_at, Time.now) %></span>
+    </li>
+  <% end %>
+<% rescue Exception %>
+<% end %>
